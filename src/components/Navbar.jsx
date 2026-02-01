@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import '../assets/styles/Navbar.css';
 
 const Navbar = () => {
@@ -15,48 +14,27 @@ const Navbar = () => {
   }, []);
 
   return (
-    <motion.nav 
-      className={`navbar ${scrolled ? 'scrolled' : ''}`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, type: 'spring', stiffness: 100 }}
-    >
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav-container">
         <Link to="/" className="logo">
-          <motion.div 
-            className="logo-icon"
-            whileHover={{ rotate: 360, scale: 1.1 }}
-            transition={{ duration: 0.6 }}
-          >
-            M
-          </motion.div>
+          <div className="logo-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+            </svg>
+          </div>
           <span className="logo-text">Madhava Studios</span>
         </Link>
         
         <ul className="nav-links">
-          {['Home', 'Services', 'Portfolio', 'Contact'].map((item, index) => (
-            <motion.li
-              key={item}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <a href={item === 'Home' ? '#home' : `#${item.toLowerCase()}`}>
-                {item}
-              </a>
-            </motion.li>
-          ))}
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
 
-        <motion.button 
-          className="cta-nav-btn"
-          // whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(16, 185, 129, 0.3)" }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Let's Talk
-        </motion.button>
+        <button className="cta-nav-btn">Start for free</button>
       </div>
-    </motion.nav>
+    </nav>
   );
 };
 
