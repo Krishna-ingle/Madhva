@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiMonitor, FiSmartphone, FiCode, FiShoppingCart, FiLayout, FiDatabase } from 'react-icons/fi';
+import { FiMonitor, FiSmartphone, FiCode, } from 'react-icons/fi';
 import '../assets/styles/Services.css';
 
 const Services = () => {
