@@ -1,167 +1,208 @@
 .services {
-  padding: 6rem 0;
-  background: #f7f6f3;
+  padding: 80px 0;
+  background-color: #f9f7f4;
 }
 
 .services-title {
   text-align: center;
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 60px;
   color: #1a1a1a;
-  margin-bottom: 4rem;
-  letter-spacing: -0.02em;
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 25px;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* Service Card */
 .service-card {
-  background: white;
-  padding: 2.5rem;
+  background: #ffffff;
+  padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.2s ease;
-}
-
-.service-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-}
-
-/* Service Icon */
-.service-icon {
-  width: 60px;
-  height: 60px;
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Service Content */
-.service-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 0.8rem;
-}
-
-.service-description {
-  color: #5f6368;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
-}
-
-.service-link {
-  color: #1a1a1a;
-  text-decoration: underline;
-  font-weight: 500;
-  font-size: 0.95rem;
-  display: inline-block;
-  margin-bottom: 1.5rem;
-}
-
-.service-link:hover {
-  color: #00A82D;
-}
-
-/* Service Buttons */
-.service-buttons {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  text-align: left;
 }
 
-.service-button {
-  background: white;
-  border: 2px solid #e5e5e5;
-  padding: 0.9rem 1.5rem;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  color: #1a1a1a;
-  transition: all 0.2s ease;
+.service-icon-top {
+  font-size: 2.2rem;
+  margin-bottom: 25px;
 }
 
-.service-button:hover {
-  border-color: #00A82D;
-  background: #f8fff9;
-}
-
-.button-icon {
-  font-size: 1.2rem;
-}
-
-/* Browser Buttons */
-.service-browsers {
-  display: flex;
-  gap: 0.8rem;
-}
-
-.browser-button {
-  flex: 1;
-  background: white;
-  border: 2px solid #e5e5e5;
-  padding: 0.9rem;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  color: #1a1a1a;
-  transition: all 0.2s ease;
-}
-
-.browser-button:hover {
-  border-color: #00A82D;
-  background: #f8fff9;
-}
-
-.browser-icon {
+.card-heading {
   font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: #000;
+}
+
+.card-para {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: 20px;
+  min-height: 50px;
+}
+
+.link-wrapper {
+  margin-bottom: 25px;
+}
+
+.text-link {
+  color: #000;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* Button Styling matching the screenshot */
+.button-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.action-btn {
+  background: white;
+  border: 1px solid #d1d1d1;
+  padding: 12px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dark-btn {
+  background: #1a1a1a;
+  color: white;
+  border: none;
+}
+
+.btn-logo {
+  font-size: 1.3rem;
+}
+
+/* Browser Icons row from screenshot */
+.browser-row {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.browser-item {
+  flex: 1;
+  border: 1px solid #d1d1d1;
+  padding: 15px 5px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.br-logo {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.br-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.button-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.action-btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for color change */
+}
+
+/* Permanent Black Style (App Store) */
+.permanent-black {
+  background-color: #fcfcfc;
+  color: #000000;
+  border: 1px solid #d1d1d1;
+}
+
+.permanent-black:hover {
+  background-color: #000000;
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+/* Hover Black Style (Mac, Windows, Google Play) */
+.hover-black {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #d1d1d1;
+}
+
+/* This creates the Black Hover Effect you asked for */
+.hover-black:hover {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-color: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+.btn-logo {
+  font-size: 1.3rem;
+}
+
+/* browser-item hover effect to match */
+.browser-item {
+  flex: 1;
+  border: 1px solid #d1d1d1;
+  padding: 15px 5px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.browser-item:hover {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-color: #1a1a1a;
+}
+
+.browser-item:hover .br-logo,
+.browser-item:hover .br-name {
+  color: #ffffff;
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .services-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 768px) {
-  .services {
-    padding: 4rem 0;
-  }
-
-  .services-title {
-    font-size: 2rem;
-  }
-
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .service-card {
-    padding: 2rem;
-  }
-
-  .service-browsers {
-    flex-direction: column;
-  }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card { padding: 30px; }
+  .services-title { font-size: 2rem; }
 }

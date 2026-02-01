@@ -1,5 +1,7 @@
 import React from 'react';
-import { FiMonitor, FiSmartphone, FiCode, } from 'react-icons/fi';
+import { FiMonitor, FiSmartphone, FiScissors } from 'react-icons/fi';
+import { FaApple, FaWindows, FaChrome, FaFirefoxBrowser, FaSafari } from 'react-icons/fa';
+import { IoLogoGooglePlaystore } from "react-icons/io5";
 import '../assets/styles/Services.css';
 
 const Services = () => {
@@ -8,10 +10,10 @@ const Services = () => {
       icon: <FiMonitor />,
       title: 'Desktop',
       description: 'Get the power of Madhava on your desktop.',
-      link: 'Release Notes',
+      linkText: 'Release Notes',
       buttons: [
-        { text: 'Download for Mac', icon: '🍎' },
-        { text: 'Download for Windows', icon: '🪟' }
+        { text: 'Download for Mac', icon: <FaApple /> },
+        { text: 'Download for Windows', icon: <FaWindows /> }
       ],
       iconColor: '#6C7FFF'
     },
@@ -20,19 +22,19 @@ const Services = () => {
       title: 'Mobile',
       description: 'Stay organized and productive even on the go.',
       buttons: [
-        { text: 'App Store', icon: '🍎' },
-        { text: 'Google Play', icon: '▶️' }
+        { text: 'App Store', icon: <FaApple />, isBlack: true }, // Permanent Black
+        { text: 'Google Play', icon: <IoLogoGooglePlaystore /> }
       ],
       iconColor: '#E084FF'
     },
     {
-      icon: <FiCode />,
+      icon: <FiScissors />,
       title: 'Web Clipper Extension',
       description: 'Clip what you see with a click.',
       browsers: [
-        { name: 'Chrome', icon: '🌐' },
-        { name: 'Firefox', icon: '🦊' },
-        { name: 'Safari', icon: '🧭' }
+        { name: 'Chrome', icon: <FaChrome /> },
+        { name: 'Firefox', icon: <FaFirefoxBrowser /> },
+        { name: 'Safari', icon: <FaSafari /> }
       ],
       iconColor: '#00A82D'
     }
@@ -42,39 +44,42 @@ const Services = () => {
     <section id="services" className="services">
       <div className="container">
         <h2 className="services-title">Build something amazing with us</h2>
-
         <div className="services-grid">
           {services.map((service, index) => (
             <div key={index} className="service-card">
-              <div className="service-icon" style={{ color: service.iconColor }}>
+              <div className="service-icon-top" style={{ color: service.iconColor }}>
                 {service.icon}
               </div>
-
-              <h3 className="service-title">{service.title}</h3>
-              <p className="service-description">{service.description}</p>
-
-              {service.link && (
-                <a href="#" className="service-link">{service.link}</a>
+              <h3 className="card-heading">{service.title}</h3>
+              <p className="card-para">{service.description}</p>
+              
+              {service.linkText && (
+                <div className="link-wrapper">
+                  <a href="#portfolio" className="text-link">{service.linkText}</a>
+                </div>
               )}
 
               {service.buttons && (
-                <div className="service-buttons">
-                  {service.buttons.map((button, btnIndex) => (
-                    <button key={btnIndex} className="service-button">
-                      <span className="button-icon">{button.icon}</span>
-                      {button.text}
+                <div className="button-stack">
+                  {service.buttons.map((btn, bIdx) => (
+                    <button 
+                      key={bIdx} 
+                      className={`action-btn ${btn.isBlack ? 'permanent-black' : 'hover-black'}`}
+                    >
+                      <span className="btn-logo">{btn.icon}</span>
+                      {btn.text}
                     </button>
                   ))}
                 </div>
               )}
 
               {service.browsers && (
-                <div className="service-browsers">
-                  {service.browsers.map((browser, brIndex) => (
-                    <button key={brIndex} className="browser-button">
-                      <span className="browser-icon">{browser.icon}</span>
-                      <span>{browser.name}</span>
-                    </button>
+                <div className="browser-row">
+                  {service.browsers.map((br, rIdx) => (
+                    <div key={rIdx} className="browser-item">
+                      <span className="br-logo">{br.icon}</span>
+                      <span className="br-name">{br.name}</span>
+                    </div>
                   ))}
                 </div>
               )}
