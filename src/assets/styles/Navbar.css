@@ -93,3 +93,101 @@
     font-size: 0.85rem;
   }
 }
+
+
+/* ... Keep your existing desktop styles ... */
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.menu-icon {
+  display: none; /* Hidden on desktop */
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  cursor: pointer;
+  z-index: 2000;
+}
+
+.mobile-only { display: none; }
+
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block; /* Show on mobile */
+  }
+
+  .desktop-only {
+    display: none; /* Hide desktop button */
+  }
+
+  .mobile-only {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: -100%; /* Start off-screen */
+    left: 0;
+    width: 100%;
+    height: auto;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    gap: 2rem;
+    transition: 0.4s ease-in-out;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border-bottom: 1px solid #eee;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    top: 70px; /* Slide down below the navbar height */
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .mobile-cta {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Ensure the navbar itself stays on top */
+  .navbar {
+    z-index: 2000; 
+  }
+
+  .nav-links {
+    display: flex; /* Change from 'none' to 'flex' */
+    position: fixed;
+    top: -100vh; /* Start completely off-screen */
+    left: 0;
+    width: 100%;
+    height: auto;
+    background: #ffffff;
+    flex-direction: column;
+    padding: 2rem 0;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1500; /* Ensure this is high, but below navbar */
+    border-bottom: 2px solid #00A82D;
+  }
+
+  /* This is the class the React state toggles */
+  .nav-links.active {
+    top: 70px; /* Adjust this to match your exact Navbar height */
+    opacity: 1;
+    visibility: visible;
+  }
+}

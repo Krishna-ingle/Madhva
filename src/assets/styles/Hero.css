@@ -3,7 +3,8 @@
   display: flex;
   align-items: center;
   padding: 8rem 0 4rem;
-  background: #efebdc;
+  background: linear-gradient(180deg, #efebdc 0%, #ffffff 100%);
+  position: relative;
 }
 
 .hero .container {
@@ -121,7 +122,6 @@
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-  margin-bottom:100;
 }
 .hero-video2 {
   max-width: 1000px;
@@ -141,5 +141,11 @@
   height:900;
   width:"100&"
 
+}
+
+.margin{
+  font-size:200;
+  color:rgba(248, 247, 247, 0.02);
+  height:200;
 }
   

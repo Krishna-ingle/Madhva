@@ -1,60 +1,52 @@
 import React from 'react';
-import '../assets/styles/currentProject.css'; // Import the CSS file
+import { motion } from 'framer-motion';
+import '../assets/styles/currentProject.css'; 
 
-const currentProject = () => {
+const MidCTA = () => {
   return (
-    <div className="container">
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-content">
-          <h1>Your Smart Store</h1>
-          <p>
-            Manage shopping, city-based suggestions, and Firebase-powered features in one seamless React Native app.
-            Deployed on Android—your daily store companion.
-          </p>
-          <img src="/assets/smartstore-app.png" alt="Smart Store Android App Screenshot" />
-        </div>
-      </section>
+    <div className="mid-cta-wrapper">
+      <section className="mid-cta-section">
+        {/* The blurred background accents from your screenshot */}
+        <div className="glow glow-left"></div>
+        <div className="glow glow-right"></div>
 
-      {/* Features Section */}
-      <section className="features">
-        <h2>Key Features</h2>
-        <div className="features-grid">
-          <div className="feature-card">
-            <h3>City Suggestions</h3>
-            <p>Indian city dataset for smart search and location-based shopping.</p>
-          </div>
-          <div className="feature-card">
-            <h3>Firebase Integration</h3>
-            <p>Real-time data with react-native-firebase for smooth Android builds.</p>
-          </div>
-          <div className="feature-card">
-            <h3>Responsive UI</h3>
-            <p>Green gradients and animations for engaging mobile experience.</p>
-          </div>
-          <div className="feature-card">
-            <h3>Local Deployment</h3>
-            <p>Built with npm, Gradle for Windows—ready for npx react-native run-android.</p>
-          </div>
-          <div className="feature-card">
-            <h3>Portfolio Ready</h3>
-            <p>GitHub-hosted, Vercel-deployed companion web showcase.</p>
-          </div>
-          <div className="feature-card">
-            <h3>Download Now</h3>
-            <p>Grab the APK and start shopping smarter on your device.</p>
-          </div>
-        </div>
-      </section>
+        <div className="mid-cta-content">
+          <motion.h2 
+            className="mid-cta-title"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Software That Works for You
+          </motion.h2>
+          
+          <motion.p 
+            className="mid-cta-text"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Plan, build, and deploy web and mobile applications with <br className="d-none d-md-block" />
+            clean design and strong technology.
+          </motion.p>
 
-      {/* CTA Section */}
-      <section className="cta">
-        <h2>Ready to Shop Smart?</h2>
-        <p>Experience the future of mobile shopping with Smart Store.</p>
-        <button>Get the App</button>
+          <motion.button 
+            className="mid-cta-button"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+          >
+            Get Started
+          </motion.button>
+        </div>
       </section>
     </div>
   );
 };
 
-export default currentProject;
+export default MidCTA;
