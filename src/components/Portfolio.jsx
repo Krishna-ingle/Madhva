@@ -1,12 +1,10 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiArrowRight, FiArrowLeft, FiPlus } from 'react-icons/fi';
+import { FiArrowRight, FiArrowLeft, FiPlus, FiShoppingBag, FiFileText } from 'react-icons/fi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 
-// Ensure this path is correct based on your file structure
 import hoverPattern from '../assets/images/hover-pattern1.png';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -21,15 +19,15 @@ const Portfolio = () => {
       id: 'smart-store', 
       title: 'Smart Store', 
       description: 'Capture everything that is, was, or could be important.', 
-      image: '🛍️', 
-      bgColor: '#f0fdf4' 
+      icon: <FiShoppingBag />, 
+      iconColor: '#2db8f9' 
     },
     { 
       id: 'miss-kla', 
       title: 'MissKla', 
       description: 'Get further faster with ready-made note structures.', 
-      image: '📋', 
-      bgColor: '#f0f9ff' 
+      icon: <FiFileText />, 
+      iconColor: '#6c7fff' 
     },
   ];
 
@@ -45,7 +43,7 @@ const Portfolio = () => {
 
         <Swiper
           modules={[Navigation, Pagination]}
-          spaceBetween={30}
+          spaceBetween={25}
           slidesPerView={1}
           onBeforeInit={(swiper) => { swiperRef.current = swiper; }}
           breakpoints={{
@@ -60,11 +58,18 @@ const Portfolio = () => {
                 <div className="hover-img-container">
                   <img src={hoverPattern} alt="" className="bg-hover-img" />
                 </div>
-                <div className="card-icon" style={{ backgroundColor: project.bgColor }}>
-                  {project.image}
+                
+                <div className="card-top-content">
+                  <div className="evernote-icon" style={{ color: project.iconColor }}>
+                    {project.icon}
+                  </div>
+                  <h3 className="card-heading">{project.title}</h3>
+                  <p className="card-para">{project.description}</p>
                 </div>
-                <h3 className="card-heading">{project.title}</h3>
-                <p className="card-para">{project.description}</p>
+
+                <div className="card-footer-arrow">
+                  <FiArrowRight />
+                </div>
               </div>
             </SwiperSlide>
           ))}
@@ -74,20 +79,27 @@ const Portfolio = () => {
               <div className="hover-img-container">
                 <img src={hoverPattern} alt="" className="bg-hover-img" />
               </div>
-              <div className="card-icon create-icon-bg">
-                <FiPlus className="plus-icon" />
+              
+              <div className="card-top-content">
+                <div className="evernote-icon create-icon-style">
+                  <FiPlus />
+                </div>
+                <h3 className="card-heading">Create Project</h3>
+                <p className="card-para">Start your own journey and build something amazing with us.</p>
               </div>
-              <h3 className="card-heading">Create Project</h3>
-              <p className="card-para">Start your own journey and build something amazing with us.</p>
+
+              <div className="card-footer-arrow">
+                <FiArrowRight />
+              </div>
             </div>
           </SwiperSlide>
         </Swiper>
 
         <div className="slider-controls">
-          <button className="nav-btn prev" onClick={() => swiperRef.current?.slidePrev()}>
+          <button className="nav-btn" onClick={() => swiperRef.current?.slidePrev()}>
             <FiArrowLeft />
           </button>
-          <button className="nav-btn next" onClick={() => swiperRef.current?.slideNext()}>
+          <button className="nav-btn" onClick={() => swiperRef.current?.slideNext()}>
             <FiArrowRight />
           </button>
         </div>
