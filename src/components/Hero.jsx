@@ -1,7 +1,14 @@
 import React from 'react';
 import '../assets/styles/Hero.css';
-
+import {useNavigate} from 'react-router-dom'
 const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = () =>{
+    window.scrollTo(0, 0);
+     navigate('/userform');
+  }
+
   return (
     <section id="home" className="hero">
       <div className="container">
@@ -15,7 +22,9 @@ const Hero = () => {
           </p>
 
           <div className="hero-cta">
-            <button className="btn-primary">Just 1 Minute</button>
+            <button className="btn-primary"
+            onClick={handleNavigation}
+            >Just 1 Minute</button>
             <p className="hero-login">
               One minute to share your needs. A smarter solution for your business
               {/* <a href="#login">Log in</a> */}

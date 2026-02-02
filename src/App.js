@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import ProjectDetail from './pages/ProjectDetail';
 import './App.css';
 import Navbar from './components/Navbar';
+import UserFormPage from "./pages/userform";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
+          <Route path="/userform" element={<UserFormPage />} />
         </Routes>
       </div>
     </Router>

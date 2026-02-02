@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom'; // Add useLocation
 import { FiMenu, FiX } from 'react-icons/fi';
 import logoImg from '../assets/images/madhvalogo.svg';
 import '../assets/styles/Navbar.css';
@@ -7,6 +7,7 @@ import '../assets/styles/Navbar.css';
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation(); // Detects which page you are on
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,31 +19,34 @@ const Navbar = () => {
 
   const closeMenu = () => setMenuOpen(false);
 
+  // Helper to handle scrolling to top when navigating to Home
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+    closeMenu();
+  };
+
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav-container">
-        {/* Logo Section - Extra text removed as per your request */}
-        <Link to="/" className="logo-link" onClick={closeMenu}>
+        <Link to="/" className="logo-link" onClick={scrollToTop}>
           <img src={logoImg} alt="Madhava Studios" className="navbar-brand-svg" />
         </Link>
         
-        {/* Desktop & Mobile Navigation Links */}
         <div className={`nav-menu-wrapper ${menuOpen ? 'active' : ''}`}>
           <ul className="nav-links">
-            <li><a href="#home" onClick={closeMenu}>Home</a></li>
-            <li><a href="#services" onClick={closeMenu}>Services</a></li>
-            <li><a href="#portfolio" onClick={closeMenu}>Portfolio</a></li>
-            <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
+            {/* 1. Use Link for Home to ensure it works from any page */}
+            <li><Link to="/" onClick={scrollToTop}>Home</Link></li>
+            
+            {/* 2. For sections, if not on home, use <a> with /#section */}
+            <li><a href="/#services" onClick={closeMenu}>Services</a></li>
+            <li><a href="/#portfolio" onClick={closeMenu}>Portfolio</a></li>
+            <li><a href="/#contact" onClick={closeMenu}>Contact</a></li>
           </ul>
-          {/* Action button inside menu for mobile */}
           <button className="cta-nav-btn mobile-only-btn">Start for free</button>
         </div>
 
-        {/* Right side actions */}
         <div className="nav-actions">
           <button className="cta-nav-btn desktop-only-btn">Start for free</button>
-          
-          {/* Hamburger Icon - Only visible on mobile */}
           <div className="menu-toggle-icon" onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <FiX /> : <FiMenu />}
           </div>
