@@ -11,9 +11,9 @@
 
 .modern-card {
   background: white;
-  padding: 40px;
+  padding: 30px;
   border-radius: 12px;
-  min-height: 380px;
+  min-height: 320px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
