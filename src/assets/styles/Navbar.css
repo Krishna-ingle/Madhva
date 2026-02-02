@@ -3,56 +3,48 @@
   top: 0;
   left: 0;
   right: 0;
-  padding: 1rem 0;
-  background: white;
-  z-index: 1000;
-  transition: box-shadow 0.2s ease;
+  background: #ffffff;
+  padding: 0.8rem 0;
+  z-index: 2000;
   border-bottom: 1px solid #e5e5e5;
+  transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2.5rem; /* Professional side spacing */
 }
 
-.logo {
+/* LOGO - Scaled for your specific SVG */
+.logo-link {
   display: flex;
   align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: #00A82D;
 }
 
-.logo-icon {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #00A82D;
+.navbar-brand-svg {
+  height: 45px; /* Adjust height based on your SVG proportions */
+  width: auto;
+  display: block;
 }
 
-.logo-text {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #00A82D;
-}
-
+/* NAVIGATION LINKS */
 .nav-links {
   display: flex;
-  gap: 5rem;
+  gap: 3rem;
   list-style: none;
-  margin: 0;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #5f6368;
+  color: #1a1a1a;
   font-weight: 500;
   font-size: 0.95rem;
   transition: color 0.2s ease;
@@ -60,134 +52,70 @@
 
 .nav-links a:hover {
   color: #00A82D;
-  background:#ffffff
+}
+
+/* BUTTONS & ACTIONS */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .cta-nav-btn {
-  background: #101010;
+  background: #1a1a1a;
   color: white;
-  padding: 0.7rem 1.5rem;
+  padding: 0.7rem 1.4rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: background 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .cta-nav-btn:hover {
   background: #00A82D;
 }
 
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
+.mobile-only-btn { display: none; }
+.menu-toggle-icon { display: none; font-size: 1.8rem; cursor: pointer; }
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 992px) {
+  .nav-container { padding: 0 1.5rem; }
   
-  .logo-text {
-    font-size: 1.1rem;
-  }
+  .menu-toggle-icon { display: block; order: 2; }
+  .nav-actions { order: 3; }
   
-  .cta-nav-btn {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.85rem;
-  }
-}
-
-
-/* ... Keep your existing desktop styles ... */
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.menu-icon {
-  display: none; /* Hidden on desktop */
-  font-size: 1.8rem;
-  color: #1a1a1a;
-  cursor: pointer;
-  z-index: 2000;
-}
-
-.mobile-only { display: none; }
-
-@media (max-width: 768px) {
-  .menu-icon {
-    display: block; /* Show on mobile */
-  }
-
-  .desktop-only {
-    display: none; /* Hide desktop button */
-  }
-
-  .mobile-only {
-    display: block;
-    width: 100%;
-    margin-top: 1rem;
-  }
-
-  .nav-links {
+  .desktop-only-btn { display: none; }
+  
+  .nav-menu-wrapper {
     position: fixed;
-    top: -100%; /* Start off-screen */
+    top: -100vh;
     left: 0;
     width: 100%;
-    height: auto;
     background: white;
     flex-direction: column;
+    padding: 3rem 0;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1500;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: flex;
     align-items: center;
-    padding: 2rem 0;
-    gap: 2rem;
-    transition: 0.4s ease-in-out;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    border-bottom: 1px solid #eee;
-    z-index: 999;
   }
 
-  .nav-links.active {
-    top: 70px; /* Slide down below the navbar height */
-  }
-
-  .nav-links a {
-    font-size: 1.2rem;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-  }
-
-  .mobile-cta {
-    width: 80%;
-    margin: 0 auto;
-    display: block;
-  }
-}
-
-@media (max-width: 768px) {
-  /* Ensure the navbar itself stays on top */
-  .navbar {
-    z-index: 2000; 
+  .nav-menu-wrapper.active {
+    top: 65px; /* Just below navbar */
   }
 
   .nav-links {
-    display: flex; /* Change from 'none' to 'flex' */
-    position: fixed;
-    top: -100vh; /* Start completely off-screen */
-    left: 0;
-    width: 100%;
-    height: auto;
-    background: #ffffff;
     flex-direction: column;
-    padding: 2rem 0;
-    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1500; /* Ensure this is high, but below navbar */
-    border-bottom: 2px solid #00A82D;
+    text-align: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
   }
 
-  /* This is the class the React state toggles */
-  .nav-links.active {
-    top: 70px; /* Adjust this to match your exact Navbar height */
-    opacity: 1;
-    visibility: visible;
+  .mobile-only-btn {
+    display: block;
+    width: 80%;
   }
 }
