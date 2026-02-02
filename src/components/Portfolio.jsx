@@ -1,64 +1,88 @@
-import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiArrowRight, FiArrowLeft, FiChevronRight } from 'react-icons/fi';
-// Import Swiper React components and styles
+import { FiArrowRight, FiArrowLeft, FiPlus } from 'react-icons/fi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
+
+// Ensure this path is correct based on your file structure
+import hoverPattern from '../assets/images/hover-pattern1.png';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
 import '../assets/styles/Portfolio.css';
 
 const Portfolio = () => {
   const navigate = useNavigate();
-  const [activeFilter, setActiveFilter] = useState('All');
   const swiperRef = useRef(null);
 
   const projects = [
-    { id: 'smart-store', title: 'Smart Store', category: 'Mobile App', description: 'Capture everything that is, was, or could be important.', image: '🛍️', gradient: 'linear-gradient(135deg, #f0fdf4, #f0fdf4)' },
-    { id: 'miss-klla', title: 'Template', category: 'Web', description: 'Get further faster with ready-made note structures.', image: '📋', gradient: 'linear-gradient(135deg, #f0f9ff, #f0f9ff)' },
-    { id: 'health-tracker', title: 'Search', category: 'Mobile App', description: 'Find exactly what you’re looking for in seconds.', image: '🔍', gradient: 'linear-gradient(135deg, #fffbeb, #fffbeb)' },
+    { 
+      id: 'smart-store', 
+      title: 'Smart Store', 
+      description: 'Capture everything that is, was, or could be important.', 
+      image: '🛍️', 
+      bgColor: '#f0fdf4' 
+    },
+    { 
+      id: 'miss-kla', 
+      title: 'MissKla', 
+      description: 'Get further faster with ready-made note structures.', 
+      image: '📋', 
+      bgColor: '#f0f9ff' 
+    },
   ];
-
-  const filteredProjects = activeFilter === 'All' 
-    ? projects 
-    : projects.filter(p => p.category === activeFilter);
 
   return (
     <section id="portfolio" className="portfolio">
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">Make the most of your ideas</h2>
-          <p className="section-description">Capture everything that is important and access it whenever.</p>
+          <h2 className="section-title">Make the most of your ideas—and your time</h2>
+          <p className="section-description">
+            Capture everything that is, was, or could be important and access it whenever and wherever.
+          </p>
         </div>
 
         <Swiper
           modules={[Navigation, Pagination]}
-          spaceBetween={20}
+          spaceBetween={30}
           slidesPerView={1}
           onBeforeInit={(swiper) => { swiperRef.current = swiper; }}
           breakpoints={{
             640: { slidesPerView: 2 },
-            1024: { slidesPerView: 4 },
+            1024: { slidesPerView: 3 }, 
           }}
           className="portfolio-swiper"
         >
-          {filteredProjects.map((project) => (
+          {projects.map((project) => (
             <SwiperSlide key={project.id}>
               <div className="modern-card" onClick={() => navigate(`/project/${project.id}`)}>
-                <div className="card-icon" style={{ background: project.gradient }}>
+                <div className="hover-img-container">
+                  <img src={hoverPattern} alt="" className="bg-hover-img" />
+                </div>
+                <div className="card-icon" style={{ backgroundColor: project.bgColor }}>
                   {project.image}
                 </div>
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
+                <h3 className="card-heading">{project.title}</h3>
+                <p className="card-para">{project.description}</p>
               </div>
             </SwiperSlide>
           ))}
+
+          <SwiperSlide>
+            <div className="modern-card create-card" onClick={() => navigate('/contact')}>
+              <div className="hover-img-container">
+                <img src={hoverPattern} alt="" className="bg-hover-img" />
+              </div>
+              <div className="card-icon create-icon-bg">
+                <FiPlus className="plus-icon" />
+              </div>
+              <h3 className="card-heading">Create Project</h3>
+              <p className="card-para">Start your own journey and build something amazing with us.</p>
+            </div>
+          </SwiperSlide>
         </Swiper>
 
-        {/* Custom Navigation Arrows from your screenshot */}
         <div className="slider-controls">
           <button className="nav-btn prev" onClick={() => swiperRef.current?.slidePrev()}>
             <FiArrowLeft />

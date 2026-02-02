@@ -1,19 +1,35 @@
 :root {
-  --primary-green: #10B981;
-  --dark-green: #059669;
-  --light-green: #D1FAE5;
-  --accent-green: #34D399;
-  --text-dark: #111827;
-  --text-gray: #6B7280;
-  --bg-light: #F0FDF4;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  /* Updated to Evernote Branding */
+  --primary-green: #00A82D;
+  --dark-green: #008f26;
+  --light-green: #f0fdf4;
+  --accent-green: #00A82D;
+  
+  /* Text & Background */
+  --text-dark: #1a1a1a;
+  --text-gray: #555555;
+  --bg-light: #f9f7f4; /* Subtle off-white from your screenshots */
+  
+  /* Shadows - More subtle for a flatter, modern look */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-html {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  /* Hides horizontal scrollbar globally */
+  overflow-x: hidden !important; 
+  width: 100%;
   scroll-behavior: smooth;
+  background-color: #ffffff;
+  color: var(--text-dark);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 ::selection {
@@ -21,25 +37,48 @@ html {
   color: white;
 }
 
+/* --- CUSTOM VERTICAL SCROLLBAR (Chrome, Safari, Edge) --- */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px; /* Balanced width for better visibility */
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--bg-light);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-green);
-  border-radius: 5px;
+  background: #1a1a1a; /* Modern Black */
+  border-radius: 10px;
+  /* Use a smaller border to create the "floating" effect without hiding the thumb */
+  border: 3px solid var(--bg-light); 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--dark-green);
+  background: #000000; /* Pure Black on hover */
 }
 
+/* --- CUSTOM VERTICAL SCROLLBAR (Firefox Support) --- */
+/* This handles both the thumb and the track color for Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #1a1a1a var(--bg-light);
+}
+
+/* --- UTILITY CLASSES --- */
 .container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
+}
+
+/* Responsive Padding */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  /* Optional: Hide scrollbar on mobile for a cleaner look */
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
 }
