@@ -1,10 +1,45 @@
+.req-star {
+  color: #454545; /* Black color for the star as requested */
+  margin-left: 4px;
+  font-weight: bold;
+}
+/* UPDATED INPUT & SELECT STYLING */
+/* Include all types: text, email, and tel to ensure they fill the width */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select {
+  width: 100%; /* Ensures they match the width of the form container */
+  padding: 14px 18px;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  font-size: 1rem;
+  appearance: none;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  color: #1a1a1a;
+  font-weight: 500;
+  box-sizing: border-box; /* Critical: prevents padding from making the box wider than 100% */
+}
+
+/* Maintain focus style for all types */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05); /* Optional: subtle shadow like Evernote */
+}
 .form-section {
-  padding: 120px 20px;
+  padding: 120px 50px;
   background-color: #f8f9fa; /* Light Evernote gray */
   min-height: 100vh;
   display: flex;
   justify-content: center;
 }
+
 
 .form-container {
   max-width: 650px;

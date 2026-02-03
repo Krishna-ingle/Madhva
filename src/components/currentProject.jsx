@@ -34,12 +34,11 @@ const MidCTA = () => {
 
           <motion.button 
             className="mid-cta-button"
-            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.1 }}
           >
             Get Started
           </motion.button>

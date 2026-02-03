@@ -4,7 +4,9 @@ import Home from './pages/Home';
 import ProjectDetail from './pages/ProjectDetail';
 import './App.css';
 import Navbar from './components/Navbar';
+//pages
 import UserFormPage from "./pages/userform";
+import { ProcessDealPage } from './pages/ProcessDealPage';
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
           <Route path="/userform" element={<UserFormPage />} />
+          <Route path='/processdealpage' element={<ProcessDealPage/>} />
         </Routes>
       </div>
     </Router>

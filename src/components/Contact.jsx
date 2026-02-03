@@ -1,12 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiMessageCircle, FiArrowRight } from 'react-icons/fi';
 import '../assets/styles/Contact.css';
 
 const Contact = () => {
-  // Replace with your actual WhatsApp number (include country code)
-  const whatsappNumber = "919876543210"; 
-  const emailAddress = "hello@madhavastudios.com";
+  const whatsappNumber = "919579465525"; 
+  const emailAddress = "inglekrishna05@gmail.com";
+
+  // 1. Initialize state to capture form data
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    mobile: '',
+    details: ''
+  });
+
+  // 2. Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // 3. Form Validation and Submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Mobile number validation: must be exactly 10 digits
+    const mobileRegex = /^[0-9]{10}$/;
+    if (!mobileRegex.test(formData.mobile)) {
+      alert("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+
+    console.log("Form Submitted Successfully:", formData);
+    alert("Thank you! Your request has been sent to Madhava Studios.");
+    
+    // Clear form after success
+    setFormData({ fullName: '', email: '', mobile: '', details: '' });
+  };
 
   return (
     <section id="contact" className="contact-evernote">
@@ -16,14 +47,13 @@ const Contact = () => {
           <p className="modern-p">Choose the most convenient way to reach us.</p>
         </div>
 
-        {/* UX Improvement: Quick Action Buttons */}
         <div className="quick-actions-container">
           <motion.a 
-            href={`https://wa.me/${whatsappNumber}?text=Hi Madhava Studios, I'm interested in a project!`}
+            href={`https://wa.me/${whatsappNumber}?text=Hi Madhava Dlobal, I'm interested in a project!`}
             target="_blank"
             rel="noopener noreferrer"
             className="action-card whatsapp"
-            whileHover={{ y: -5 }}
+            whileHover={{ y: -1 }}
           >
             <FiMessageCircle className="action-icon" />
             <span>Chat on WhatsApp</span>
@@ -31,9 +61,9 @@ const Contact = () => {
           </motion.a>
 
           <motion.a 
-            href={`mailto:${emailAddress}`}
+            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=Project Inquiry&body=Hi Madhava Global,`}
             className="action-card email"
-            whileHover={{ y: -5 }}
+            whileHover={{ y: -1 }}
           >
             <FiMail className="action-icon" />
             <span>Send an Email</span>
@@ -41,19 +71,58 @@ const Contact = () => {
           </motion.a>
         </div>
 
-        {/* Standard Form for Detailed Project Specs */}
         <div className="contact-form-wrapper">
           <h3 className="form-sub-title">Or send a detailed brief</h3>
-          <form className="evernote-form">
+          
+          <form className="evernote-form" onSubmit={handleSubmit}>
             <div className="form-group-modern">
-              <label>Full Name</label>
-              <input type="text" placeholder="Your Name" />
+              <label>Full Name <span className="black-star">*</span></label>
+              <input 
+                type="text" 
+                name="fullName"
+                placeholder="Your Name" 
+                value={formData.fullName}
+                onChange={handleChange}
+                required 
+              />
             </div>
+
             <div className="form-group-modern">
-              <label>Project Details</label>
-              <textarea rows="4" placeholder="Briefly describe your goals..."></textarea>
+              <label>Email Address</label>
+              <input 
+                type="email" 
+                name="email"
+                placeholder="Your Email Address" 
+                value={formData.email}
+                onChange={handleChange}
+              />
             </div>
-            <button className="evernote-btn">Submit Request</button>
+
+            <div className="form-group-modern">
+              <label>Mobile Number <span className="black-star">*</span></label>
+              <input 
+                type="tel" 
+                name="mobile"
+                placeholder="Mobile Number" 
+                value={formData.mobile}
+                onChange={handleChange}
+                required 
+              />
+            </div>
+
+            <div className="form-group-modern">
+              <label>Project Details <span className="black-star">*</span></label>
+              <textarea 
+                name="details"
+                rows="4" 
+                placeholder="Briefly describe your goals..."
+                value={formData.details}
+                onChange={handleChange}
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" className="evernote-btn">Submit Request</button>
           </form>
         </div>
       </div>

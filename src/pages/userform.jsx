@@ -3,6 +3,9 @@ import '../assets/styles/UserformPage.css';
 
 const UserFormPage = () => {
   const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    mobile: '',
     projectType: '',
     traffic: '',
     city: '',
@@ -17,14 +20,21 @@ const UserFormPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // 1. Mobile validation: Must be exactly 10 digits
+    const mobileRegex = /^[0-9]{10}$/;
+    if (!mobileRegex.test(formData.mobile)) {
+      alert("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+
     console.log("Form Submitted:", formData);
     alert("Thank you! Madhava Global will contact you soon.");
   };
 
   return (
     <section className="form-section">
-      <div className="form-container">
-        {/* TOP SECTION */}
+      <div className="container form-container">
         <div className="form-header">
           <h1 className="form-headline">Let’s Build Something Powerful for Your Business</h1>
           <p className="form-subtext">
@@ -34,7 +44,42 @@ const UserFormPage = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="main-form">
-          {/* 1. What are you planning to build? */}
+          {/* User Info Section */}
+          <div className="form-group">
+            <label>Your Name?</label>
+            <input 
+              type="text" 
+              name="name" 
+              placeholder="Enter your name" 
+              onChange={handleChange} 
+              required 
+            />
+          </div>
+
+          <div className="form-group">
+            {/* Removed star and added (Optional) */}
+            <label>Your Email Address? <span className="optional-text">(Optional)</span></label>
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="Enter your email" 
+              onChange={handleChange} 
+              /* Removed required attribute */
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Your mobile number?</label>
+            <input 
+              type="tel" 
+              name="mobile" 
+              placeholder="10-digit mobile number" 
+              onChange={handleChange} 
+              required 
+            />
+          </div>
+
+          {/* Project Details Section */}
           <div className="form-group">
             <label>What are you planning to build?</label>
             <select name="projectType" onChange={handleChange} required>
@@ -48,18 +93,6 @@ const UserFormPage = () => {
             </select>
           </div>
 
-          {/* 2. Business Traffic */}
-          {/* <div className="form-group">
-            <label>Your current business traffic per day?</label>
-            <div className="radio-grid">
-              {['0 – 50', '50 – 200', '200 – 500', '500+'].map(val => (
-                <label key={val} className="custom-radio">
-                  <input type="radio" name="traffic" value={val} onChange={handleChange} />
-                  <span>{val} visitors</span>
-                </label>
-              ))}
-            </div>
-          </div> */}
           <div className="form-group">
             <label>Your current business traffic per day?</label>
             <select name="traffic" onChange={handleChange}>
@@ -70,7 +103,6 @@ const UserFormPage = () => {
             </select>
           </div>
 
-          {/* 3. City Input */}
           <div className="form-group">
             <label>Your current city?</label>
             <input 
@@ -82,7 +114,6 @@ const UserFormPage = () => {
             />
           </div>
 
-          {/* 4. Screens/Pages */}
           <div className="form-group">
             <label>How many screens/pages are you planning?</label>
             <select name="pages" onChange={handleChange}>
@@ -93,7 +124,6 @@ const UserFormPage = () => {
             </select>
           </div>
 
-          {/* 5. Convert to Software */}
           <div className="form-group">
             <label>Do you want to convert your business into software?</label>
             <select name="softwareConversion" onChange={handleChange}>
@@ -104,7 +134,6 @@ const UserFormPage = () => {
             </select>
           </div>
 
-          {/* 7. Timeline */}
           <div className="form-group">
             <label>What is your preferred timeline?</label>
             <select name="timeline" onChange={handleChange}>

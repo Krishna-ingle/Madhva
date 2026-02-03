@@ -5,6 +5,27 @@
   max-width: 600px;
   margin: 0 auto 50px;
 }
+.evernote-form .evernote-btn {
+  width: 100%; /* Makes button full width of the form */
+  background-color: #000000; /* Pure black background */
+  color: #ffffff; /* White text */
+  padding: 16px 20px;
+  border: none; /* Removes default gray border */
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth color change */
+  margin-top: 10px;
+}
+
+/* HOVER STATE: Green background, white text */
+.evernote-btn:hover {
+  background-color: #00A82D; 
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 168, 45, 0.2);
+}
 
 .action-card {
   display: flex;
@@ -20,8 +41,8 @@
 }
 
 .action-card.whatsapp {
-  background-color: #f0fdf4;
-  color: #15803d;
+  background-color: #f8fafc;
+  color: #1e293b;
 }
 
 .action-card.email {
@@ -30,8 +51,7 @@
 }
 
 .action-card:hover {
-  border-color: #00A82D;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-color: #050505;
 }
 
 .action-icon {
@@ -50,4 +70,17 @@
   .quick-actions-container {
     grid-template-columns: 1fr;
   }
+}
+.black-star {
+  color: #000000; /* Pure black color as requested */
+  margin-left: 3px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* Optional: Slight highlight on focus to match Evernote style */
+.form-group-modern input:focus, 
+.form-group-modern textarea:focus {
+  border-color: #1a1a1a;
+  outline: none;
 }

@@ -146,11 +146,7 @@
   border: 1px solid #d1d1d1;
 }
 
-.permanent-black:hover {
-  background-color: #000000;
-  transform: translateY(-2px);
-  color: #ffffff;
-}
+
 
 /* Hover Black Style (Mac, Windows, Google Play) */
 .hover-black {
@@ -159,13 +155,7 @@
   border: 1px solid #d1d1d1;
 }
 
-/* This creates the Black Hover Effect you asked for */
-.hover-black:hover {
-  background-color: #1a1a1a;
-  color: #ffffff;
-  border-color: #1a1a1a;
-  transform: translateY(-2px);
-}
+
 
 .btn-logo {
   font-size: 1.3rem;
@@ -185,16 +175,9 @@
   transition: all 0.3s ease;
 }
 
-.browser-item:hover {
-  background-color: #1a1a1a;
-  color: #ffffff;
-  border-color: #1a1a1a;
-}
 
-.browser-item:hover .br-logo,
-.browser-item:hover .br-name {
-  color: #ffffff;
-}
+
+
 
 /* Responsive */
 @media (max-width: 1024px) {

@@ -1,0 +1,158 @@
+/* ... Keep all your existing CSS exactly as it is ... */
+
+.process-card {
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    position: relative;
+    overflow: hidden; /* This keeps the shapes inside the card */
+    transition: all 0.3s ease;
+    z-index: 1; /* Creates a layer for the shapes to sit behind */
+}
+
+/* 🟢 BACKGROUND CIRCLE (Top Right) */
+.process-card::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(0, 168, 45, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0; /* Hidden by default */
+    transform: scale(0.5);
+    transition: all 0.5s ease-out;
+}
+
+/* 🎡 BACKGROUND WHEEL (Bottom Right) */
+.process-card::after {
+    content: "";
+    position: absolute;
+    bottom: -30px;
+    right: -10px;
+    width: 100px;
+    height: 100px;
+    border: 12px double rgba(0, 0, 0, 0.03); /* Low opacity "wheel" look */
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0; /* Hidden by default */
+    transform: rotate(-45deg) scale(0.8);
+    transition: all 0.6s ease-out;
+}
+
+/* 🖱️ HOVER STATE - SHOW ANIMATION */
+.process-card:hover::before {
+    opacity: 1;
+    transform: scale(1.2) translate(-10px, 10px); /* Circle grows and moves */
+}
+
+.process-card:hover::after {
+    opacity: 1;
+    transform: rotate(0deg) scale(1.1); /* Wheel rotates into place */
+}
+
+.process-card:hover {
+    background: #ffffff;
+}
+
+/* ... Keep the rest of your CSS (step-number, media queries, etc.) ... */
+
+
+.process-section {
+    padding: 100px 20px;
+    background-color: #ffffff;
+    font-family: 'Inter', sans-serif;
+}
+
+.process-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.process-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
+    margin-bottom: 15px;
+}
+
+.process-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* GRID SYSTEM */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* CARD STYLING */
+.process-card {
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.process-card:hover {
+    background: #ffffff;
+}
+
+.step-number {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #e0e0e0; /* Subtle large number */
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.process-card:hover .step-number {
+    color: #101010; /* Evernote Green on hover */
+}
+
+.step-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+}
+
+.step-description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+}
+
+.step-line {
+    width: 40px;
+    height: 4px;
+    background: #00A82D;
+    margin-top: 25px;
+    border-radius: 2px;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 992px) {
+    .process-grid {
+        grid-template-columns: 1fr; /* Stacks vertically on tablets/mobile */
+        max-width: 500px;
+    }
+    
+    .process-title {
+        font-size: 2rem;
+    }
+}

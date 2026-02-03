@@ -43,19 +43,18 @@
 /* Bright green button matching the screenshot */
 .mid-cta-button {
   background-color: #a3e635;
-  color: #000;
+  color: #000000;
   border: none;
-  padding: 16px 40px;
+  padding: 12px 50px;
   font-size: 1.1rem;
-  font-weight: 700;
-  border-radius: 8px;
+  font-weight: 500;
+  border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 .mid-cta-button:hover {
-  background-color: #bef264;
-  box-shadow: 0 0 20px rgba(163, 230, 53, 0.3);
+  background-color: #00A82D;
+  color: aliceblue;
 }
 
 /* Decorative Glows */

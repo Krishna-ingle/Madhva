@@ -3,11 +3,21 @@ import { Link, useLocation } from 'react-router-dom'; // Add useLocation
 import { FiMenu, FiX } from 'react-icons/fi';
 import logoImg from '../assets/images/madhvalogo.svg';
 import '../assets/styles/Navbar.css';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const handleNavigation = () => {
+    window.scrollTo(0,0);
+    navigate('/processdealpage');
+  }
+
+
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation(); // Detects which page you are on
+
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +56,9 @@ const Navbar = () => {
         </div>
 
         <div className="nav-actions">
-          <button className="cta-nav-btn desktop-only-btn">Start for free</button>
+          <button className="cta-nav-btn desktop-only-btn"
+          onClick={handleNavigation}
+          >Start for free</button>
           <div className="menu-toggle-icon" onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <FiX /> : <FiMenu />}
           </div>
