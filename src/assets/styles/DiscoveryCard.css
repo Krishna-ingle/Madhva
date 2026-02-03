@@ -1,226 +1,198 @@
+/* --- UNIVERSAL CARD CONTAINER --- */
 .phase-card-container {
   position: relative;
-  background-color: #f7f3ee; /* Cream background from image */
-  border-radius: 24px;
-  padding: 80px 40px;
+  background-color: #f7f3ee;
+  border-radius: 20px;
+  padding: 30px 20px; /* Reduced from 80px to save scroll space */
   overflow: hidden;
   font-family: 'Inter', sans-serif;
-  max-width: 1200px;
-  margin: 30px auto;
-  margin-bottom: 60px;
+  max-width: 1100px;
+  margin: 20px auto;
+  scroll-margin-top: 80px; /* Ensures 'Next Step' scrolls to perfect position */
 }
 
-/* Background Sunburst Decor */
+/* Background Decor */
 .bg-sunburst {
   position: absolute;
-  top: -100px;
-  left: -100px;
-  width: 400px;
-  height: 400px;
+  top: -120px;
+  left: -120px;
+  width: 300px;
+  height: 300px;
   background: repeating-conic-gradient(from 0deg, #ffffff 0deg 10deg, transparent 10deg 20deg);
-  opacity: 0.4;
+  opacity: 0.3;
   z-index: 0;
 }
 
+/* FLEX CONTENT - The Key to Responsiveness */
 .phase-card-content {
   display: flex;
+  flex-direction: row; /* Horizontal on Desktop */
   align-items: center;
-  gap: 60px;
+  gap: 40px; /* Tighter gap */
   position: relative;
   z-index: 1;
 }
 
-/* Image Section Layout */
+/* --- IMAGE SECTION --- */
 .image-section {
   flex: 1;
-  position: relative;
   display: flex;
   justify-content: center;
-}
-
-.main-image-wrapper {
   position: relative;
 }
 
 .main-image {
-  width: 350px;
-  height: 450px;
+  width: 100%;
+  max-width: 320px; /* Smaller image to reduce scroll */
+  height: 300px; /* Shorter height to reduce scroll */
   object-fit: cover;
-  border-radius: 20px;
+  border-radius: 16px;
 }
 
 .status-note {
   position: absolute;
-  bottom: 20px;
+  bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
   background: #e6f9ed;
-  padding: 10px 20px;
-  border-radius: 12px;
+  padding: 8px 16px;
+  border-radius: 10px;
   border: 1px solid #c2f0d1;
+  font-size: 0.85rem;
   font-weight: 600;
   white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .floating-doc {
   position: absolute;
-  top: 40px;
-  right: -30px;
+  top: 20px;
+  right: -10px;
   background: white;
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  width: 240px;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  width: 180px;
+  display: block; /* Visible on desktop */
 }
 
-/* Text Section Content */
+/* --- TEXT SECTION --- */
 .text-section {
-  flex: 1;
+  flex: 1.2;
 }
 
 .phase-tag {
   background: #ffdb00;
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: 20px;
   font-weight: 800;
-  font-size: 0.8rem;
-  text-transform: uppercase;
+  font-size: 0.75rem;
 }
 
 .phase-title {
-  font-size: 2.8rem;
+  font-size: 1.8rem; /* Reduced from 2.8rem to save space */
   font-weight: 800;
-  margin: 20px 0;
+  margin: 10px 0;
   color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.requirement-list {
+  margin-top: 15px;
+  list-style: none;
+  padding: 0;
+}
+
+.requirement-list li {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: #444;
 }
 
 .outcome-box {
-  margin-top: 30px;
-  padding: 20px;
+  margin-top: 20px;
+  padding: 15px;
   background: rgba(255, 255, 255, 0.5);
-  border-radius: 12px;
+  border-radius: 10px;
   border-left: 4px solid #1a1a1a;
+  font-size: 0.9rem;
 }
 
 .cta-button {
-  margin-top: 30px;
+  margin-top: 20px;
   background: #1a1a1a;
   color: white;
-  padding: 14px 32px;
+  padding: 12px 28px;
   border-radius: 8px;
   font-weight: 700;
   border: none;
   cursor: pointer;
+  transition: transform 0.2s;
 }
 
+.cta-button:hover { transform: scale(1.02); }
 
-/* Responsive adjustments */
+/* --- PHASE SPECIFIC COLORS --- */
+
+/* Design Phase */
+.design-phase { background-color: #f0f4f7; }
+.design-tag { background: #01c2ed !important; color: white; }
+
+/* Development Phase */
+.dev-phase { background-color: #edfce9; }
+.dev-tag { background: #50db41 !important; color: white; }
+
+/* Launch Phase */
+.launch-phase { background-color: #f7f4f0; }
+.launch-tag { background: #a87000 !important; color: white; }
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+
 @media (max-width: 992px) {
-  .phase-card-content { flex-direction: column; text-align: center; }
-  .image-section { margin-bottom: 40px; }
-  .floating-doc { display: none; } /* Hide complex overlap on small screens */
-  .phase-title { font-size: 2rem; }
+  .phase-card-content {
+    flex-direction: column; /* Stacks image on top of text */
+    text-align: center;
+    gap: 30px;
+  }
+
+  .main-image {
+    max-width: 100%;
+    height: 250px;
+  }
+
+  .floating-doc {
+    display: none; /* Removes clutter on smaller screens */
+  }
+
+  .phase-title {
+    font-size: 1.6rem;
+  }
+
+  .outcome-box {
+    text-align: left; /* Keeps text readable */
+  }
 }
 
+@media (max-width: 480px) {
+  .phase-card-container {
+    padding: 20px 15px;
+    border-radius: 15px;
+  }
+  
+  .phase-title {
+    font-size: 1.4rem;
+  }
 
-
-/* designcardcss */
-
-/* Color overrides for Design Phase */
-.design-phase {
-  background-color: #f0f4f7; /* Soft Blue/Gray background */
+  .status-note {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
 }
 
-.design-tag {
-  background: #01c2ed !important; /* Cyan Tag */
-  color: #ffffff;
-}
-
-.blue-note {
-  background: #e6f2f9 !important;
-  border-color: #c2e0f0 !important;
-}
-
-.highlight.blue { background: #c2e0f0; }
-.highlight.purple { background: #e0c2f0; }
-.highlight.orange { background: #f0d4c2; }
-
-.design-doc {
- 
-}
-
-/* Ensure the layout remains perfectly aligned with Phase 1 */
-.requirement-list li {
-  margin-bottom: 8px;
-  position: relative;
-}
-.requirement-list {
-  margin-top: 20px;
-}
-
-.requirement-list li::before {
-  position: absolute;
-  left: 0;
-  color: #1a1a1a;
-  font-weight: bold;
-}
-
-
-
-/* development card css */
-
-/* Color overrides for Development Phase */
-.dev-phase {
-  background-color: #edfce9; /* Very subtle Lavender/Gray background */
-}
-
-.dev-tag {
-  background: #50db41 !important; /* Indigo Tag */
-  color: #ffffff;
-}
-
-.purple-note {
-  background: #f0f0ff !important;
-  border-color: #dadaff !important;
-}
-
-.highlight.purple { background: #e0e0ff; }
-.highlight.blue { background: #d0e7ff; }
-.highlight.green { background: #d0f5d0; }
-
-.dev-doc {
-}
-
-
-
-/* Development card view  design*/
-
-/* Color overrides for Launch Phase */
-.launch-phase {
-  background-color: #f7f4f0; /* Soft Mint/White background */
-}
-
-.launch-tag {
-  background: #a87000 !important; /* Evernote Green */
-  color: #fff;
-}
-
-.green-note {
-  background: #e6f9ed !important;
-  border-color: #c2f0d1 !important;
-}
-
-
-.launch-doc {
-}
-
-/* Add a subtle animation to the status note for the final phase */
-.green-note {
-  animation: pulse 2s infinite;
-}
-
+/* Animations */
 @keyframes pulse {
   0% { transform: translateX(-50%) scale(1); }
   50% { transform: translateX(-50%) scale(1.05); }
   100% { transform: translateX(-50%) scale(1); }
 }
+.green-note { animation: pulse 2s infinite; }
