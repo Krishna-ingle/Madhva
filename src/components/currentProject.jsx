@@ -1,8 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import '../assets/styles/currentProject.css'; 
-
+import { useNavigate } from 'react-router-dom';
 const MidCTA = () => {
+  const navigate = useNavigate();
+  const handleNavigation = () => {
+    window.scrollTo(0, 0);
+    navigate('/processdealpage');
+  }
   return (
     <div className="mid-cta-wrapper">
       <section className="mid-cta-section">
@@ -39,6 +44,7 @@ const MidCTA = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
+            onClick={handleNavigation}
           >
             Get Started
           </motion.button>
