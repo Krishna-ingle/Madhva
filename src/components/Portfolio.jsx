@@ -54,7 +54,10 @@ const Portfolio = () => {
         >
           {projects.map((project) => (
             <SwiperSlide key={project.id}>
-              <div className="modern-card" onClick={() => navigate(`/project/${project.id}`)}>
+              <div className="modern-card" onClick={() => {
+                navigate(`/project/${project.id}`);
+                window.scrollTo(0, 0);
+              }}>
                 <div className="hover-img-container">
                   <img src={hoverPattern} alt="" className="bg-hover-img" />
                 </div>

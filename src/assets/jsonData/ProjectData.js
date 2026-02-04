@@ -45,7 +45,7 @@
     subtitle: 'Traditional Gift Packaging & Event Styling',
     category: 'E-commerce & Branding',
     overview: 'A premium digital platform showcasing specialized traditional Indian gift packaging. MissKla focuses on the art of "Shagun" and "Aher" packaging for weddings, birthdays, and festive ceremonies, blending cultural heritage with modern aesthetics.',
-    color: '#6c7fff',
+    color: '#1dbc01',
     colortik: 'rgb(37, 37, 37)',
     sections: [
       {
