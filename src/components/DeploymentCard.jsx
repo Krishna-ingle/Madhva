@@ -53,7 +53,7 @@ const LaunchCard = () => {
           </div>
 
           
-          <button className="cta-button" onClick={handleNavigate}>Next Phase</button>
+          <button className="cta-button" onClick={handleNavigate}>Let's Build Together</button>
         </div>
       </div>
     </div>

@@ -10,7 +10,12 @@
   margin-bottom: 60px;
   color: #1a1a1a;
 }
-
+.service-header .service-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 40px;
+}
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -49,7 +49,7 @@ const Contact = () => {
 
         <div className="quick-actions-container">
           <motion.a 
-            href={`https://wa.me/${whatsappNumber}?text=Hi Madhava Dlobal, I'm interested in a project!`}
+            href={`https://wa.me/${whatsappNumber}?text=Hi Madhava Global, I'm interested in a project!`}
             target="_blank"
             rel="noopener noreferrer"
             className="action-card whatsapp"

@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 //pages
 import UserFormPage from "./pages/userform";
 import { ProcessDealPage } from './pages/ProcessDealPage';
+import ServiceDetail from './pages/ServiceDetail';
 
 function App() {
   return (
@@ -15,9 +16,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/project/:id" element={<ProjectDetail />} />
+          <Route path="/project/:projectId" element={<ProjectDetail />} />
           <Route path="/userform" element={<UserFormPage />} />
           <Route path='/processdealpage' element={<ProcessDealPage/>} />
+          <Route path="/services/:serviceId" element={<ServiceDetail />} />
         </Routes>
       </div>
     </Router>

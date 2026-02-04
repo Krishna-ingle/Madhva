@@ -1,0 +1,103 @@
+.detail-page {
+  padding: 120px 0 80px;
+  background: #ffffff;
+  min-height: 100vh;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.detail-hero {
+  margin-bottom: 60px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 40px;
+}
+
+.detail-tag {
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.detail-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #1a1a1a;
+  margin: 20px 0;
+  letter-spacing: -0.03em;
+}
+
+.detail-tagline {
+  font-size: 1.4rem;
+  color: #4a4a4a;
+  max-width: 700px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 80px;
+}
+
+.detail-main h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.detail-main p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.feature-list {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+}
+
+.detail-sidebar .cta-box {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 12px;
+  position: sticky;
+  top: 100px;
+}
+
+.sidebar-btn {
+  width: 100%;
+  padding: 15px;
+  background: #00a82d; /* Evernote Green */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .detail-grid { grid-template-columns: 1fr; gap: 40px; }
+  .feature-list { grid-template-columns: 1fr; }
+}

@@ -1,12 +1,12 @@
 import React from 'react';
 import '../assets/styles/Hero.css';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 const Hero = () => {
   const navigate = useNavigate();
 
-  const handleNavigation = () =>{
+  const handleNavigation = () => {
     window.scrollTo(0, 0);
-     navigate('/userform');
+    navigate('/userform');
   }
 
   return (
@@ -23,7 +23,7 @@ const Hero = () => {
 
           <div className="hero-cta">
             <button className="btn-primary"
-            onClick={handleNavigation}
+              onClick={handleNavigation}
             >Just 1 Minute</button>
             <p className="hero-login">
               One minute to share your needs. A smarter solution for your business
@@ -32,11 +32,19 @@ const Hero = () => {
           </div>
         </div>
 
-         <div className="hero-video">
-          <video 
-            autoPlay 
-            loop 
-            muted 
+        {/* Video Container 1 */}
+        <div
+          className="hero-video"
+          onClick={() => {
+            navigate('/project/smart-store');
+            window.scrollTo(0, 0);
+          }}
+          style={{ cursor: 'pointer' }}
+        >
+          <video
+            autoPlay
+            loop
+            muted
             playsInline
             className="hero-video-player"
           >
@@ -45,13 +53,21 @@ const Hero = () => {
           </video>
         </div>
 
+        <h1 className="margin">hiiii</h1> {/* Changed 'class' to 'className' */}
 
-        <h1 class="margin">hiiii</h1>
-        <div className="hero-video2">
-          <video 
-            autoPlay 
-            loop 
-            muted 
+        {/* Video Container 2 */}
+        <div
+          className="hero-video2"
+          onClick={() => {
+            navigate('/project/smart-store');
+            window.scrollTo(0, 0);
+          }}
+          style={{ cursor: 'pointer' }}
+        >
+          <video
+            autoPlay
+            loop
+            muted
             playsInline
             className="hero-video-player"
           >

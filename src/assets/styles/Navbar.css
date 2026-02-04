@@ -52,8 +52,13 @@
 
 .nav-links a:hover {
   color: #00A82D;
-}
+  cursor: pointer;
 
+}
+.nav-links span:hover{
+  color: #00A82D;
+  cursor: pointer;
+}
 /* BUTTONS & ACTIONS */
 .nav-actions {
   display: flex;
