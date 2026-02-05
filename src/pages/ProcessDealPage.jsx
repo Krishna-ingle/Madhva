@@ -36,7 +36,7 @@ export const ProcessDealPage = () => {
             <div className="container">
                 <div className="process-header">
                     <h2 className="process-title">How we build your success</h2>
-                    <p className="process-subtitle">A simple, transparent 4-step process to take your business digital.</p>
+                    <p className="process-subtitle">Please go through our project workflow here every phase means a lot to us. </p>
                 </div>
             </div>
 

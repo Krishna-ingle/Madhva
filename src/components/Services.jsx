@@ -103,9 +103,9 @@ const Services = () => {
   return (
     <section id="services" className="services">
       <div className="container">
-        <div className="services-header">
+        <div className="services-header" style={{justifyContent:'center'}}>
           <h2 className="services-title">Build something amazing with us</h2>
-          <p className="services-subtitle">Enterprise-grade solutions tailored to your growth.</p>
+          <p className="services-subtitle" style={{justifySelf:'center'}}>Enterprise-grade solutions tailored to your growth.</p>
         </div>
 
         <div className="services-grid">

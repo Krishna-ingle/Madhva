@@ -25,9 +25,9 @@ const LaunchCard = () => {
           <div className="floating-doc launch-doc">
             <h3>Final Deployment</h3>
             <ul className="doc-list">
-              <li><span>Approval</span> Client Confirmed</li>
-              <li><span>Refined</span> Final Polishing</li>
-              <li><span>Hosting</span> Live Environment</li>
+              <li>Client Approval Received</li>
+              <li>Quality Refinement & Optimization</li>
+              <li>Successfully Launched in Production Environment</li>
             </ul>
           </div>
         </div>

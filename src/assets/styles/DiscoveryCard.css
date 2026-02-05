@@ -1,23 +1,24 @@
 /* --- MAIN CONTAINER --- */
+
 .phase-card-container {
   position: relative;
   background-color: #f7f3ee;
-  border-radius: 24px;
-  padding: 40px 5%; /* Percentage padding helps responsive scaling */
+  border-radius: 20px; /* 24px → 20px */
+  padding: 32px 4%; /* 40px → 32px, 5% → 4% */
   overflow: hidden;
   font-family: 'Inter', sans-serif;
-  max-width: 1200px;
-  margin: 40px auto;
+  max-width: 850px; /* 1000px → 850px */
+  margin: 32px auto; /* 40px → 32px */
   z-index: 1;
 }
 
 /* Background Sunburst - Set to stay behind everything */
 .bg-sunburst {
   position: absolute;
-  top: -150px;
-  left: -150px;
-  width: 500px;
-  height: 500px;
+  top: -120px; /* -150px → -120px */
+  left: -120px; /* -150px → -120px */
+  width: 400px; /* 500px → 400px */
+  height: 400px; /* 500px → 400px */
   background: repeating-conic-gradient(from 0deg, #ffffff 0deg 10deg, transparent 10deg 20deg);
   opacity: 0.3;
   z-index: -1;
@@ -26,9 +27,9 @@
 /* --- ALIGNMENT WRAPPER --- */
 .phase-card-content {
   display: flex;
-  align-items: center; /* Vertical center */
+  align-items: center;
   justify-content: space-between;
-  gap: 60px;
+  gap: 48px; /* 60px → 48px */
   position: relative;
 }
 
@@ -38,34 +39,35 @@
   display: flex;
   justify-content: center;
   position: relative;
-  min-width: 300px; /* Prevents image from getting too small on desktop */
+  min-width: 240px; /* 300px → 240px */
 }
 
 .main-image-wrapper {
   position: relative;
   width: 100%;
-  max-width: 380px;
+  max-width: 300px; /* 380px → 300px */
 }
 
 .main-image {
   width: 100%;
-  height: auto; /* Changed from fixed 450px for responsiveness */
-  aspect-ratio: 3 / 4; /* Keeps consistent shape */
+  height: auto;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
-  border-radius: 20px;
+  border-radius: 16px; /* 20px → 16px */
   display: block;
 }
 
 .status-note {
   position: absolute;
-  bottom: 20px;
+  bottom: 16px; /* 20px → 16px */
   left: 50%;
   transform: translateX(-50%);
   background: #e6f9ed;
-  padding: 10px 20px;
-  border-radius: 12px;
+  padding: 8px 16px; /* 10px 20px → 8px 16px */
+  border-radius: 10px; /* 12px → 10px */
   border: 1px solid #c2f0d1;
   font-weight: 600;
+  font-size: 0.85rem; /* Added for consistency */
   white-space: nowrap;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
@@ -73,38 +75,40 @@
 .floating-doc {
   position: absolute;
   top: 10%;
-  right: -40px;
+  right: -32px; /* -40px → -32px */
   background: white;
-  padding: 24px;
-  border-radius: 16px;
+  padding: 20px; /* 24px → 20px */
+  border-radius: 14px; /* 16px → 14px */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  width: 240px;
+  width: 200px; /* 240px → 200px */
   z-index: 2;
 }
-.doc-list{
-  padding-left: 10px;
-  margin-top: 5px;
+
+.doc-list {
+  padding-left: 8px; /* 10px → 8px */
+  margin-top: 4px; /* 5px → 4px */
 }
+
 /* --- TEXT SECTION --- */
 .text-section {
-  flex: 1.2; /* Gives text more room than the image */
+  flex: 1.2;
   text-align: left;
 }
 
 .phase-tag {
   display: inline-block;
   background: #ffdb00;
-  padding: 6px 16px;
+  padding: 5px 14px; /* 6px 16px → 5px 14px */
   border-radius: 50px;
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 0.8rem; /* 0.85rem → 0.8rem */
   letter-spacing: 0.05em;
 }
 
 .phase-title {
-  font-size: clamp(1.8rem, 5vw, 2.8rem); /* Dynamic font size based on screen width */
+  font-size: clamp(1.5rem, 4.5vw, 2.4rem); /* clamp(1.8rem, 5vw, 2.8rem) → reduced */
   font-weight: 800;
-  margin: 15px 0;
+  margin: 12px 0; /* 15px → 12px */
   color: #1a1a1a;
   line-height: 1.1;
 }
@@ -112,52 +116,53 @@
 .phase-body p {
   color: #444;
   line-height: 1.6;
-  font-size: 1.05rem;
+  font-size: 0.95rem; /* 1.05rem → 0.95rem */
 }
 
 .requirement-list {
-  margin-top: 20px;
+  margin-top: 16px; /* 20px → 16px */
   padding: 0;
   list-style: none;
 }
 
 .requirement-list li {
-  padding-left: 25px;
-  margin-bottom: 12px;
+  padding-left: 20px; /* 25px → 20px */
+  margin-bottom: 10px; /* 12px → 10px */
   position: relative;
-  font-size: 1rem;
+  font-size: 0.9rem; /* 1rem → 0.9rem */
 }
 
 .requirement-list li::before {
   content: "•";
   position: absolute;
   left: 0;
-  color: inherit; /* Matches tag color via parent phase classes */
+  color: inherit;
   font-weight: bold;
 }
 
 .outcome-box {
-  margin-top: 25px;
-  padding: 20px;
+  margin-top: 20px; /* 25px → 20px */
+  padding: 16px; /* 20px → 16px */
   background: rgba(255, 255, 255, 0.7);
-  border-radius: 16px;
-  border-left: 5px solid #1a1a1a;
+  border-radius: 14px; /* 16px → 14px */
+  border-left: 4px solid #1a1a1a; /* 5px → 4px */
 }
 
 .cta-button {
-  margin-top: 30px;
+  margin-top: 24px; /* 30px → 24px */
   background: #1a1a1a;
   color: white;
-  padding: 16px 36px;
-  border-radius: 10px;
+  padding: 14px 30px; /* 16px 36px → 14px 30px */
+  border-radius: 5px; /* 10px → 8px */
   font-weight: 700;
+  font-size: 0.95rem; /* Added for consistency */
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
 
 .cta-button:hover {
-  transform: translateY(-2px);
+  background-color: #02a02c;
 }
 
 /* --- PHASE OVERRIDES --- */
@@ -175,36 +180,36 @@
 
 /* --- RESPONSIVE BREAKPOINTS --- */
 @media (max-width: 1024px) {
-  .phase-card-content { gap: 40px; }
-  .floating-doc { width: 200px; right: -20px; }
+  .phase-card-content { gap: 32px; } /* 40px → 32px */
+  .floating-doc { width: 170px; right: -16px; } /* 200px → 170px, -20px → -16px */
 }
 
 @media (max-width: 992px) {
   .phase-card-content {
-    flex-direction: column; /* Vertical stack */
+    flex-direction: column;
     text-align: center;
-    gap: 50px;
+    gap: 40px; /* 50px → 40px */
   }
   
   .text-section {
     width: 100%;
-    max-width: 600px;
+    max-width: 500px; /* 600px → 500px */
   }
 
   .floating-doc {
-    display: none; /* Removed for cleaner mobile layout */
+    display: none;
   }
 
   .image-section {
     width: 100%;
-    order: -1; /* Image stays on top in mobile */
+    order: -1;
   }
 }
 
 @media (max-width: 480px) {
-  .phase-card-container { padding: 30px 15px; }
-  .phase-title { font-size: 1.6rem; }
-  .status-note { font-size: 0.8rem; padding: 8px 16px; }
+  .phase-card-container { padding: 24px 12px; } /* 30px 15px → 24px 12px */
+  .phase-title { font-size: 1.4rem; } /* 1.6rem → 1.4rem */
+  .status-note { font-size: 0.75rem; padding: 6px 12px; } /* 0.8rem → 0.75rem, 8px 16px → 6px 12px */
 }
 
 @keyframes pulse {

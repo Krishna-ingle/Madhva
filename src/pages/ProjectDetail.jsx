@@ -1,22 +1,29 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FiArrowLeft, FiCheck, FiCpu, FiLayout, FiTarget } from 'react-icons/fi';
-// Make sure this path is exactly where you saved your data!
 import { projectInfo } from '../assets/jsonData/ProjectData'; 
 import '../assets/styles/ProjectDetail.css';
 
 const ProjectDetail = () => {
-  const { projectId } = useParams(); // This gets the ID from the URL
+  const { projectId } = useParams(); 
   const navigate = useNavigate();
 
-  // SAFETY CHECK:
-  // 1. Get the data. 
-  // 2. If projectId is undefined or not in the object, use 'smart-store' as default.
+  const handleBack = () => {
+  navigate('/#portfolio');
+  
+  setTimeout(() => {
+    const element = document.getElementById('portfolio');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, 100);
+};
+
   const data = projectInfo[projectId] || projectInfo['smart-store'];
   console.log("Current Project ID from URL:", projectId);
   console.log("Imported Project Data:", projectInfo);
 
-  // 3. FINAL CRASH PROTECTION: If everything is still missing, return a simple message.
+
   if (!data) {
     return (
       <div className="container" style={{padding: '100px 0'}}>
@@ -29,7 +36,7 @@ const ProjectDetail = () => {
   return (
     <div className="project-detail-page">
       <div className="container">
-        <button className="back-link" onClick={() => navigate(-1)}>
+        <button className="back-link" onClick={handleBack}>
           <FiArrowLeft /> Back to Portfolio
         </button>
 
@@ -46,7 +53,6 @@ const ProjectDetail = () => {
               <p className="overview-text">{data.overview}</p>
             </section>
 
-            {/* Added Optional Chaining (?.) to prevent mapping errors */}
             {data.sections?.map((section, idx) => (
               <section key={idx} className="project-section-block">
                 <div className="section-label">

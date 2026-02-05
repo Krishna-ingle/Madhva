@@ -96,10 +96,21 @@ const ServiceDetail = () => {
   const data = serviceInfo[serviceId] || serviceInfo['cross-development'];
   const themeColor = colorMap[serviceId] || '#00A82D';
 
+  const handleBack = () => {
+  navigate('/#services');
+  
+  setTimeout(() => {
+    const element = document.getElementById('services');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, 100);
+};
+
   return (
     <div className="detail-page">
       <div className="container">
-        <button className="back-btn" onClick={() => navigate(-1)}>
+        <button className="back-btn" onClick={handleBack}>
           <FiArrowLeft /> Back to Services
         </button>
 

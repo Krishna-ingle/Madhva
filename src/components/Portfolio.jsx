@@ -36,7 +36,7 @@ const Portfolio = () => {
       <div className="container">
         <div className="section-header">
           <h2 className="section-title">Make the most of your ideas—and your time</h2>
-          <p className="section-description">
+          <p className="section-description" style={{marginTop:10}}>
             Capture everything that is, was, or could be important and access it whenever and wherever.
           </p>
         </div>

@@ -40,7 +40,7 @@ const Navbar = () => {
           {/* MOBILE BUTTON */}
           <button 
             className="cta-nav-btn mobile-only-btn" 
-            onClick={() => handleNavigation('/processdealpage')}
+            onClick={() => handleNavigation('/userform')}
           >
             Start for free
           </button>
@@ -50,7 +50,7 @@ const Navbar = () => {
           {/* DESKTOP BUTTON */}
           <button 
             className="cta-nav-btn desktop-only-btn"
-            onClick={() => handleNavigation('/processdealpage')}
+            onClick={() => handleNavigation('/userform')}
           >
             Start for free
           </button>

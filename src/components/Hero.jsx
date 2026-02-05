@@ -6,7 +6,7 @@ const Hero = () => {
 
   const handleNavigation = () => {
     window.scrollTo(0, 0);
-    navigate('/userform');
+    navigate('/processdealpage');
   }
 
   return (
