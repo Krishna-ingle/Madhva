@@ -14,7 +14,7 @@ const Services = () => {
     {
       id: 'cross-development',
       icon: <FiSmartphone />,
-      title: 'Mobile Application Native',
+      title: 'Mobile Application Cross Platform',
       description: 'Build cross-platform mobile apps with smooth performance and a single codebase for Android and iOS.',
       buttons: [
         { text: 'App Store', icon: <FaApple /> },

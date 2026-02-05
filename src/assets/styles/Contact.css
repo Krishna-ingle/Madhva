@@ -1,86 +1,133 @@
-.quick-actions-container {
+.contact-evernote {
+  padding: 80px 0;
+  background: #ffffff;
+  width: 100%;
+}
+
+.contact-evernote .contact-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.contact-evernote .contact-header-modern {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contact-evernote .modern-h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.contact-evernote .modern-p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.contact-evernote .quick-actions-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 15px;
   max-width: 600px;
-  margin: 0 auto 50px;
-}
-.evernote-form .evernote-btn {
-  width: 100%; /* Makes button full width of the form */
-  background-color: #000000; /* Pure black background */
-  color: #ffffff; /* White text */
-  padding: 16px 20px;
-  border: none; /* Removes default gray border */
-  border-radius: 4px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  font-family: 'Inter', sans-serif;
-  cursor: pointer;
-  transition: all 0.3s ease; /* Smooth color change */
-  margin-top: 10px;
+  margin: 0 auto 40px;
 }
 
-/* HOVER STATE: Green background, white text */
-.evernote-btn:hover {
-  background-color: #00A82D; 
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 168, 45, 0.2);
-}
-
-.action-card {
+.contact-evernote .action-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 25px;
-  border-radius: 12px;
+  padding: 16px 20px;
+  border-radius: 10px;
   text-decoration: none;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  color: #1e293b;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
   transition: all 0.3s ease;
-  border: 1px solid #eee;
 }
 
-.action-card.whatsapp {
-  background-color: #f8fafc;
-  color: #1e293b;
+.contact-evernote .action-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.action-card.email {
-  background-color: #f8fafc;
-  color: #1e293b;
+.contact-evernote .action-card:hover {
+  border-color: #000;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-.action-card:hover {
-  border-color: #050505;
+.contact-evernote .contact-form-wrapper {
+  max-width: 550px;
+  margin: 0 auto;
 }
 
-.action-icon {
-  font-size: 1.5rem;
+.contact-evernote .form-group-modern {
+  margin-bottom: 20px;
+  text-align: left;
 }
 
-.form-sub-title {
+.contact-form-wrapper .form-sub-title {
+  display: block;
   text-align: center;
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: #1a1a1a;
-  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
 }
 
-@media (max-width: 600px) {
-  .quick-actions-container {
-    grid-template-columns: 1fr;
-  }
+.contact-evernote .form-group-modern label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: #1a1a1a;
 }
-.black-star {
-  color: #000000; /* Pure black color as requested */
-  margin-left: 3px;
-  font-size: 0.9rem;
+
+.contact-evernote .form-group-modern input, 
+.contact-evernote .form-group-modern textarea {
+  width: 100% !important;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.contact-evernote .evernote-btn {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-evernote .evernote-btn:hover {
+  background-color: #00A82D;
+  transform: translateY(-1px);
+}
+
+.contact-evernote .black-star {
+  color: #000;
   font-weight: bold;
 }
 
-/* Optional: Slight highlight on focus to match Evernote style */
-.form-group-modern input:focus, 
-.form-group-modern textarea:focus {
-  border-color: #1a1a1a;
-  outline: none;
+@media (max-width: 768px) {
+  .contact-evernote .quick-actions-container {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+  
+  .contact-evernote .modern-h2 {
+    font-size: 1.8rem;
+  }
 }

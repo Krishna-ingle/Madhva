@@ -7,7 +7,6 @@ const Contact = () => {
   const whatsappNumber = "919579465525"; 
   const emailAddress = "inglekrishna05@gmail.com";
 
-  // 1. Initialize state to capture form data
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -15,33 +14,27 @@ const Contact = () => {
     details: ''
   });
 
-  // 2. Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // 3. Form Validation and Submission
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Mobile number validation: must be exactly 10 digits
     const mobileRegex = /^[0-9]{10}$/;
     if (!mobileRegex.test(formData.mobile)) {
       alert("Please enter a valid 10-digit mobile number.");
       return;
     }
-
     console.log("Form Submitted Successfully:", formData);
     alert("Thank you! Your request has been sent to Madhava Studios.");
-    
-    // Clear form after success
     setFormData({ fullName: '', email: '', mobile: '', details: '' });
   };
 
   return (
     <section id="contact" className="contact-evernote">
-      <div className="container">
+      {/* Changed class to contact-container to prevent footer interference */}
+      <div className="contact-container"> 
         <div className="contact-header-modern">
           <h2 className="modern-h2">Let’s build something great</h2>
           <p className="modern-p">Choose the most convenient way to reach us.</p>
@@ -53,20 +46,24 @@ const Contact = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="action-card whatsapp"
-            whileHover={{ y: -1 }}
+            whileHover={{ y: -2 }}
           >
-            <FiMessageCircle className="action-icon" />
-            <span>Chat on WhatsApp</span>
+            <div className="action-left">
+               <FiMessageCircle className="action-icon" />
+               <span>Chat on WhatsApp</span>
+            </div>
             <FiArrowRight />
           </motion.a>
 
           <motion.a 
             href={`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=Project Inquiry&body=Hi Madhava Global,`}
             className="action-card email"
-            whileHover={{ y: -1 }}
+            whileHover={{ y: -2 }}
           >
-            <FiMail className="action-icon" />
-            <span>Send an Email</span>
+            <div className="action-left">
+              <FiMail className="action-icon" />
+              <span>Send an Email</span>
+            </div>
             <FiArrowRight />
           </motion.a>
         </div>

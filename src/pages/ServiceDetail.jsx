@@ -22,12 +22,17 @@ const ServiceDetail = () => {
   const serviceInfo = {
     'cross-development': {
       badge: 'ENTERPRISE SOLUTION',
-      title: 'Premium Native Development',
-      subtitle: 'High-performance native experiences for the Apple ecosystem.',
-      overview: 'We don’t just build apps; we engineer premium digital experiences. Our iOS development process follows strict Apple App Store standards to ensure security, speed, and reliability.',
-      features: ['Swift & SwiftUI Excellence', 'Apple Watch & TV Integration', 'In-App Purchase Systems', 'Biometric Security'],
-      ctaTitle: 'Ready to start?',
-      ctaText: 'Schedule a 15-minute discovery call with our technical lead.',
+      title: 'Cross-Platform Application',
+      subtitle: 'Powerful multi-platform applications with a single codebase.',
+      overview: 'We leverage industry-leading frameworks like React Native and Flutter to deliver high-performance apps that run seamlessly on both iOS and Android. Our approach reduces development time and costs without compromising on the native look and feel.',
+      features: [
+        'React Native & Flutter Mastery',
+        'Single Codebase for iOS & Android',
+        'Shared Business Logic & UI',
+        'Faster Time-to-Market'
+      ],
+      ctaTitle: 'Scale your reach?',
+      ctaText: 'Schedule a 15-minute discovery call to discuss your multi-platform strategy.',
       ctaButton: 'Book a Meeting'
     },
     'android-development': {
@@ -97,15 +102,15 @@ const ServiceDetail = () => {
   const themeColor = colorMap[serviceId] || '#00A82D';
 
   const handleBack = () => {
-  navigate('/#services');
-  
-  setTimeout(() => {
-    const element = document.getElementById('services');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, 100);
-};
+    navigate('/#services');
+
+    setTimeout(() => {
+      const element = document.getElementById('services');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
 
   return (
     <div className="detail-page">
@@ -129,7 +134,7 @@ const ServiceDetail = () => {
           <div className="detail-main">
             <h3>Overview</h3>
             <p className="overview-text">{data.overview}</p>
-            
+
             <div className="feature-list">
               {data.features.map((f, i) => (
                 <div key={i} className="feature-item">
@@ -144,8 +149,8 @@ const ServiceDetail = () => {
             <div className="cta-box">
               <h4>{data.ctaTitle}</h4>
               <p>{data.ctaText}</p>
-              <button 
-                className="sidebar-btn" 
+              <button
+                className="sidebar-btn"
                 style={{ background: themeColor }}
                 onClick={() => navigate('/processdealpage')} // Navigates to your form
               >
