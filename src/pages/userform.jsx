@@ -11,7 +11,8 @@ const UserFormPage = () => {
     city: '',
     pages: '',
     softwareConversion: '',
-    timeline: ''
+    timeline: '',
+    description: '' // 1. Added description to state
   });
 
   const handleChange = (e) => {
@@ -21,7 +22,6 @@ const UserFormPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // 1. Mobile validation: Must be exactly 10 digits
     const mobileRegex = /^[0-9]{10}$/;
     if (!mobileRegex.test(formData.mobile)) {
       alert("Please enter a valid 10-digit mobile number.");
@@ -44,42 +44,22 @@ const UserFormPage = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="main-form">
-          {/* User Info Section */}
+          {/* ... (Previous form groups remain the same) */}
           <div className="form-group">
             <label>Your Name?</label>
-            <input 
-              type="text" 
-              name="name" 
-              placeholder="Enter your name" 
-              onChange={handleChange} 
-              required 
-            />
+            <input type="text" name="name" placeholder="Enter your name" onChange={handleChange} required />
           </div>
 
           <div className="form-group">
-            {/* Removed star and added (Optional) */}
             <label>Your Email Address? <span className="optional-text">(Optional)</span></label>
-            <input 
-              type="email" 
-              name="email" 
-              placeholder="Enter your email" 
-              onChange={handleChange} 
-              /* Removed required attribute */
-            />
+            <input type="email" name="email" placeholder="Enter your email" onChange={handleChange} />
           </div>
 
           <div className="form-group">
             <label>Your mobile number?</label>
-            <input 
-              type="tel" 
-              name="mobile" 
-              placeholder="10-digit mobile number" 
-              onChange={handleChange} 
-              required 
-            />
+            <input type="tel" name="mobile" placeholder="10-digit mobile number" onChange={handleChange} required />
           </div>
 
-          {/* Project Details Section */}
           <div className="form-group">
             <label>What are you planning to build?</label>
             <select name="projectType" onChange={handleChange} required>
@@ -105,13 +85,7 @@ const UserFormPage = () => {
 
           <div className="form-group">
             <label>Your current city?</label>
-            <input 
-              type="text" 
-              name="city" 
-              placeholder="Enter your city" 
-              onChange={handleChange} 
-              required 
-            />
+            <input type="text" name="city" placeholder="Enter your city" onChange={handleChange} required />
           </div>
 
           <div className="form-group">
@@ -142,6 +116,17 @@ const UserFormPage = () => {
               <option value="1m">1 month</option>
               <option value="flex">Flexible</option>
             </select>
+          </div>
+
+          {/* 2. Added Project Description Group */}
+          <div className="form-group full-width">
+            <label>Reference And Additional Details (Optional)</label>
+            <textarea 
+              name="description" 
+              placeholder="You may share a reference website, app, competitor link, or any extra information that can help us better understand your requirement" 
+              onChange={handleChange}
+              rows="4"
+            ></textarea>
           </div>
 
           <button type="submit" className="form-submit-btn">Send My Request</button>

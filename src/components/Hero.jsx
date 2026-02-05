@@ -49,7 +49,7 @@ const Hero = () => {
             className="hero-video-player"
           >
             <source src="/videos/animationSmartStore1.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
+            Your browser does not support.
           </video>
         </div>
 
@@ -71,8 +71,8 @@ const Hero = () => {
             playsInline
             className="hero-video-player"
           >
-            <source src="/videos/animationSmartStore2.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
+            <source src="/videos/animation2.mp4" type="video/mp4" />
+            Your browser does not support .
           </video>
         </div>
       </div>

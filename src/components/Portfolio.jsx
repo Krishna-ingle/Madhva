@@ -78,7 +78,10 @@ const Portfolio = () => {
           ))}
 
           <SwiperSlide>
-            <div className="modern-card create-card" onClick={() => navigate('/contact')}>
+            <div className="modern-card create-card" onClick={() => {
+              navigate('/processdealpage');
+              window.scrollTo(0, 0);
+            }}>
               <div className="hover-img-container">
                 <img src={hoverPattern} alt="" className="bg-hover-img" />
               </div>

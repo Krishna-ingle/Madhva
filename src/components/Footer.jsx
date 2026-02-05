@@ -26,11 +26,11 @@ const Footer = () => {
           <div className="footer-column">
             <h3>Solutions</h3>
             <ul>
-              <li><a href="#mobile-dev">Mobile App Development</a></li>
-              <li><a href="#web-dev">Web Development</a></li>
-              <li><a href="#backend">Backend Systems</a></li>
-              <li><a href="#uiux">UI / UX Design</a></li>
-              <li><a href="#enterprise">Enterprise Solutions</a></li>
+              <li><a href="/#services">Mobile App Development</a></li>
+              <li><a href="/#services">Web Development</a></li>
+              <li><a href="/#services">Backend Systems</a></li>
+              <li><a href="/#services">UI / UX Design</a></li>
+              <li><a href="/#services">Enterprise Solutions</a></li>
             </ul>
           </div>
           <div className="footer-column">
@@ -38,7 +38,7 @@ const Footer = () => {
             <ul>
               <li><a href="#services">Our Services</a></li>
               <li><a href="#portfolio">Portfolio</a></li>
-              <li><a href="#tech">Technologies</a></li>
+              <li><a href="/#services">Technologies</a></li>
               <li><a href="#cases">Case Studies</a></li>
               <li><a href="#blog">Blog</a></li>
             </ul>

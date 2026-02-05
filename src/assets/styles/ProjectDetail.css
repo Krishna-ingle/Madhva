@@ -1,5 +1,5 @@
 .project-detail-page {
-  padding: 120px 0 80px;
+  padding: 120px 0 100px;
   background: #ffffff;
 }
 
@@ -19,7 +19,7 @@
 .back-link:hover { color: #00a82d; }
 
 .project-header {
-  margin-bottom: 60px;
+  margin-bottom: 20px;
   border-bottom: 1px solid #f1f1f1;
   padding-bottom: 40px;
 }
@@ -47,6 +47,7 @@
   display: grid;
   grid-template-columns: 1fr 320px;
   gap: 80px;
+  margin-left: 20px;
 }
 
 .project-section-block {

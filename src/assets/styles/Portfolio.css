@@ -1,7 +1,8 @@
 .portfolio {
-  padding: 100px 0;
+  padding: 10px 0;
   background-color: #fcfaf7;
   text-align: left; /* Evernote style is left-aligned */
+  padding-top: 50px;
 }
 
 .section-header {

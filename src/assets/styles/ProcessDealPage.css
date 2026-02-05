@@ -154,3 +154,168 @@
         font-size: 2rem;
     }
 }
+/* seekbar */
+.status-outer-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 40px 0;
+}
+
+.status-container {
+  width: 90%;
+  max-width: 600px;
+  background: #fdfdfd;
+  padding: 30px 20px 20px; /* Extra top padding for the runner */
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+}
+
+.progress-track {
+  position: relative;
+  height: 8px;
+  background: #eee;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-top: 30px; /* Space for the runner character */
+}
+
+/* THE RUNNER STYLING */
+.progress-runner {
+  position: absolute;
+  top: -35px; /* Sits above the bar */
+  transform: translateX(-50%); /* Centers the character on the progress point */
+  z-index: 10;
+  font-size: 24px;
+}
+
+.runner-character {
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  /* If using an image, set width/height here */
+transform: rotate(-10deg); /* Makes the runner look like he's leaning back to pull */
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.progress-fill {
+  height: 100%;
+  background: #00A82D;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.steps-overlay {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+  padding: 0 2px;
+}
+
+.step-dot {
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.step-dot.active {
+  border-color: #00A82D;
+  background: #00A82D;
+}
+
+.steps-text-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.steps-text-row span {
+  font-size: 0.75rem;
+  color: #999;
+  font-weight: 600;
+}
+
+.steps-text-row span.text-active {
+  color: #1a1a1a;
+}
+
+.status-outer-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 50px 0 30px;
+}
+
+.status-container {
+  width: 85%;
+  max-width: 500px; /* Kept it compact as requested */
+  background: #ffffff;
+  padding: 40px 20px 25px;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.progress-track {
+  position: relative;
+  height: 8px; /* Slightly thicker for the pulling look */
+  background: #eee;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-top: 40px; /* Extra space for the GIF */
+}
+
+.progress-runner {
+  position: absolute;
+  top: -45px; /* Adjust based on your GIF height */
+  transform: translateX(-85%); /* Aligns character's hands to the bar edge */
+  z-index: 10;
+}
+
+.runner-gif {
+  width: 60px; /* Adjust size to look proportional */
+  height: auto;
+  display: block;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #00A82D;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.step-dot {
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  transition-delay: 4s; /* Matches end of animation */
+}
+
+.step-dot.active {
+  border-color: #00A82D;
+  background: #00A82D;
+  transform: scale(1.1);
+}
+
+.steps-text-row span {
+  font-size: 0.75rem;
+  color: #999;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.steps-text-row span.text-active {
+  color: #1a1a1a;
+}
