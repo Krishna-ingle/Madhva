@@ -30,6 +30,7 @@ const UserFormPage = () => {
   };
 
   const handleSubmit = async (e) => {
+    console.log("Btn click");
     e.preventDefault();
 
     // Mobile validation
@@ -70,8 +71,8 @@ const UserFormPage = () => {
         showAlert("Thank you! Your request has been submitted successfully.");
         // Clear form
         setFormData({
-          name: '', email: '', mobile: '', projectType: '', 
-          traffic: '0-50 visitors', city: '', pages: '1-3 screens', 
+          name: '', email: '', mobile: '', projectType: '',
+          traffic: '0-50 visitors', city: '', pages: '1-3 screens',
           softwareConversion: 'Yes, I want a full system', timeline: '1 week', description: ''
         });
       } else {
@@ -90,7 +91,9 @@ const UserFormPage = () => {
       {alert.show && (
         <div className={`custom-alert ${alert.isSuccess ? 'success' : 'error'}`}>
           <div className="alert-content">
-            <span className="alert-icon">{alert.isSuccess ? 'Right' : 'Wrong'}</span>
+            <span className={alert.isSuccess ? 'icon-success' : 'icon-error'}>
+              {alert.isSuccess ? '✔' : '✖'}
+            </span>
             <p>{alert.message}</p>
           </div>
         </div>
@@ -176,10 +179,10 @@ const UserFormPage = () => {
 
           <div className="form-group full-width">
             <label>Additional Details (Optional)</label>
-            <textarea 
-              name="description" 
+            <textarea
+              name="description"
               value={formData.description}
-              placeholder="Share reference links or competitor ideas..." 
+              placeholder="Share reference links or competitor ideas..."
               onChange={handleChange}
               rows="3"
             ></textarea>

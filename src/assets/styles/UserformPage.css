@@ -292,3 +292,17 @@ input:focus, select:focus {
   background: #9ca3af;
   cursor: not-allowed;
 }
+
+
+
+.icon-success {
+  color: #ffffff; /* Any custom color you want */
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.icon-error {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.5rem;
+}

@@ -15,28 +15,32 @@ const ProjectStatus = ({ currentStep }) => {
         .status-outer-wrapper {
           width: 100%;
           display: flex;
-          justify-content: flex-start;
+          justify-content: flex-start; 
         }
 
         .status-container {
           width: 100%;
-          max-width: 650px; 
+          max-width: 550px; 
           font-family: sans-serif;
-          padding: 0px 50px;
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          padding: 0 !important;
+          margin: 0;
         }
 
         .status-header {
           display: flex;
           justify-content: space-between;
           align-items: start;
-          margin-bottom: 30px;
+          margin-bottom: 10px;
           gap: 40px;
         }
 
         .status-header h2 {
           margin: 0;
           font-size: clamp(1rem, 4vw, 1.2rem);
-          color: #111;
+          color: #1d1d1d;
         }
 
         .phase-badge {
@@ -58,6 +62,7 @@ const ProjectStatus = ({ currentStep }) => {
           background: #f3f4f6;
           border-radius: 10px;
           margin: 40px 0 45px 0; /* Increased bottom margin for labels */
+          box-sizing: border-box; /* Ensures padding doesn't break width */
         }
 
         .progress-fill {
@@ -107,9 +112,9 @@ const ProjectStatus = ({ currentStep }) => {
         .dot {
           width: 12px;
           height: 12px;
-          background: #f3f4f6;
+          background: #22c55e;
           border-radius: 50%;
-          border: 2px solid #e5e7eb;
+          border: 2px solid #22c55e;
           box-sizing: border-box;
           transition: background 0.4s ease, border-color 0.4s ease;
         }
@@ -154,29 +159,55 @@ const ProjectStatus = ({ currentStep }) => {
         .label-active {
           color: #111;
         }
+           
+        /* --- RESPONSIVE CODE --- */
+        @media (max-width: 550px) {
+          /* Add horizontal padding to wrapper so the end dots/labels stay on screen */
+          .status-container {
+             padding-right: 35px !important; 
+             box-sizing: border-box;
+          }
+        }
 
         @media (max-width: 480px) {
-          .status-container { padding: 16px; }
-          .progress-wrapper { margin-top: 30px; }
+          .status-container { 
+            padding-right: 40px !important; 
+          }
+          .progress-wrapper { 
+            margin-top: 30px; 
+          }
+          /* Prevent text overlap by shrinking font and tightening letters */
+          .step-label {
+            font-size: 0.58rem;
+            letter-spacing: -0.01em;
+          }
+        }
+
+        @media (max-width: 380px) {
+          .step-label {
+            font-size: 0.52rem;
+          }
+          /* If screen is extremely small, tilt labels to prevent overlap */
+          .step-marker:nth-child(even) .step-label {
+            top: 35px; /* Stagger labels vertically */
+          }
         }
       `}</style>
-
       <div className="status-container">
         <div className="status-header">
-          <h2>Work in Progress</h2>
-          {/* <span className="phase-badge">{steps[adjustedStep]}</span> */}
+          <h3>Work in Progress</h3>
         </div>
 
-        <div className="progress-wrapper">
-          <motion.div 
+        <div style={{ marginLeft: '35px' }} className="progress-wrapper">
+          <motion.div
             className="progress-fill"
             initial={{ width: 0 }}
             animate={{ width: `${progressPercentage}%` }}
             onAnimationComplete={() => setIsAnimationFinished(true)}
-            transition={{ 
-              delay: 1.3, 
-              duration: 2.5, 
-              ease: "easeInOut" 
+            transition={{
+              delay: 1.3,
+              duration: 2.5,
+              ease: "easeInOut"
             }}
           />
 
@@ -188,11 +219,7 @@ const ProjectStatus = ({ currentStep }) => {
 
               return (
                 <div key={index} className="step-marker" style={{ left: leftPosition }}>
-                  {/* The Dot */}
-                 
                   <div className={`dot ${isFilled ? 'active' : ''} ${showPulse ? 'dot-current' : ''}`} />
-                  
-                  {/* The Label anchored to the dot center */}
                   <span className={`step-label ${isFilled ? 'label-active' : ''}`}>
                     {step}
                   </span>

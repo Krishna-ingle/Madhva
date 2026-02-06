@@ -12,7 +12,7 @@
   color: #666;
   font-weight: 500;
   cursor: pointer;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
   transition: color 0.2s;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .project-subtitle {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #4a4a4a;
 }
 .project-subtitle-phase {
