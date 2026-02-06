@@ -42,6 +42,19 @@
   font-size: 1.5rem;
   color: #4a4a4a;
 }
+.project-subtitle-phase {
+  background: #f0fdf4;
+  color: #16a34a;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.75rem;
+  border: 1px solid #dcfce7;
+  text-transform: uppercase;
+  white-space: nowrap;
+  width: fit-content;
+  margin-top: 20px;
+}
 
 .project-content-grid {
   display: grid;

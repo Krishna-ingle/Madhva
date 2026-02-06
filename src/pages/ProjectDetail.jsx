@@ -38,9 +38,10 @@ const ProjectDetail = () => {
         </button>
 
         <header className="project-header">
-          <ProjectStatus currentStep={data.status?.currentStep || 1} />
           <h1 className="project-main-title">{data.title}</h1>
           <p className="project-subtitle">{data.subtitle}</p>
+          <p className="project-subtitle-phase">{data.status?.phase}</p>
+          <ProjectStatus currentStep={data.status?.currentStep || 1} />
         </header>
 
         <div className="project-content-grid">

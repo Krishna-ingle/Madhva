@@ -15,31 +15,27 @@ const ProjectStatus = ({ currentStep }) => {
         .status-outer-wrapper {
           width: 100%;
           display: flex;
-          justify-content: flex-start; /* Keeps it aligned to your left-side preference */
+          justify-content: flex-start;
         }
 
         .status-container {
           width: 100%;
-          max-width: 550px; 
+          max-width: 650px; 
           font-family: sans-serif;
-          background: #fff;
-          padding: 24px;
-          border-radius: 16px;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-          box-sizing: border-box; /* Ensures padding doesn't break width */
+          padding: 0px 50px;
         }
 
         .status-header {
           display: flex;
           justify-content: space-between;
-          align-items: center;
+          align-items: start;
           margin-bottom: 30px;
-          gap: 10px;
+          gap: 40px;
         }
 
         .status-header h2 {
           margin: 0;
-          font-size: clamp(1rem, 4vw, 1.2rem); /* Responsive font size */
+          font-size: clamp(1rem, 4vw, 1.2rem);
           color: #111;
         }
 
@@ -61,7 +57,7 @@ const ProjectStatus = ({ currentStep }) => {
           height: 6px;
           background: #f3f4f6;
           border-radius: 10px;
-          margin: 40px 0 15px 0; /* Extra top margin for the pulse ring */
+          margin: 40px 0 45px 0; /* Increased bottom margin for labels */
         }
 
         .progress-fill {
@@ -87,35 +83,40 @@ const ProjectStatus = ({ currentStep }) => {
           100% { transform: translateX(100%); }
         }
 
-        .dots-container {
+        /* --- DOTS AND LABELS CONTAINER --- */
+        .step-markers-container {
           position: absolute;
           top: 50%;
           left: 0;
           width: 100%;
           transform: translateY(-50%);
-          display: flex;
-          justify-content: space-between;
           z-index: 10;
+        }
+
+        .step-marker {
+          position: absolute;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 0; /* Anchor point */
           pointer-events: none;
         }
 
         .dot {
           width: 12px;
           height: 12px;
-          background: #22c55e;
+          background: #f3f4f6;
           border-radius: 50%;
-          border: 2px solid #22c55e;
+          border: 2px solid #e5e7eb;
           box-sizing: border-box;
-          transition: background 0.4s ease;
+          transition: background 0.4s ease, border-color 0.4s ease;
         }
 
         .dot.active {
           background: #22c55e;
           border-color: #22c55e;
-        }
-
-        .dot-current {
-          position: relative;
         }
 
         .dot-current::after {
@@ -125,52 +126,45 @@ const ProjectStatus = ({ currentStep }) => {
           height: 20px;
           border: 2px solid #22c55e;
           border-radius: 50%;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
           animation: ping 1.5s infinite;
           background: rgba(105, 218, 92, 0.2);
+          margin-top: -6px;
+          margin-left: -6px;
         }
 
         @keyframes ping {
-          0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; }
-          100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+          0% { transform: scale(0.8); opacity: 1; }
+          100% { transform: scale(1.8); opacity: 0; }
         }
 
-        .labels-row {
-          display: flex;
-          justify-content: space-between;
-          color: #9ca3af;
+        /* --- LABEL ALIGNMENT FIX --- */
+        .step-label {
+          position: absolute;
+          top: 25px; /* Distance below the dot */
+          white-space: nowrap;
+          text-align: center;
+          color: #0f0f0f;
           font-weight: bold;
-          font-size: clamp(0.55rem, 2.5vw, 0.7rem); /* Shrinks on small screens */
+          font-size: clamp(0.6rem, 2.5vw, 0.75rem);
           text-transform: uppercase;
-          letter-spacing: 0.05em;
-          gap: 4px;
+          letter-spacing: 0.02em;
+          transition: color 0.4s ease;
         }
 
         .label-active {
           color: #111;
-          transition: color 0.4s ease;
         }
 
-        /* Responsive Fix for Mobile */
         @media (max-width: 480px) {
-          .status-container {
-            padding: 16px;
-          }
-          .progress-wrapper {
-            margin-top: 30px;
-          }
-          .labels-row {
-            letter-spacing: 0; /* More space for text */
-          }
+          .status-container { padding: 16px; }
+          .progress-wrapper { margin-top: 30px; }
         }
       `}</style>
 
       <div className="status-container">
         <div className="status-header">
-          <h2>Our Work in Progress</h2>
-          <span className="phase-badge">{steps[adjustedStep]}</span>
+          <h2>Work in Progress</h2>
+          {/* <span className="phase-badge">{steps[adjustedStep]}</span> */}
         </div>
 
         <div className="progress-wrapper">
@@ -186,30 +180,26 @@ const ProjectStatus = ({ currentStep }) => {
             }}
           />
 
-          <div className="dots-container">
-            {steps.map((_, index) => {
+          <div className="step-markers-container">
+            {steps.map((step, index) => {
               const isFilled = index < adjustedStep || (index === adjustedStep && isAnimationFinished);
               const showPulse = index === adjustedStep && isAnimationFinished;
+              const leftPosition = `${(index / totalSegments) * 100}%`;
 
               return (
-                <div 
-                  key={index} 
-                  className={`dot ${isFilled ? 'active' : ''} ${showPulse ? 'dot-current' : ''}`}
-                />
+                <div key={index} className="step-marker" style={{ left: leftPosition }}>
+                  {/* The Dot */}
+                 
+                  <div className={`dot ${isFilled ? 'active' : ''} ${showPulse ? 'dot-current' : ''}`} />
+                  
+                  {/* The Label anchored to the dot center */}
+                  <span className={`step-label ${isFilled ? 'label-active' : ''}`}>
+                    {step}
+                  </span>
+                </div>
               );
             })}
           </div>
-        </div>
-
-        <div className="labels-row">
-          {steps.map((step, index) => {
-             const isLabelActive = index < adjustedStep || (index === adjustedStep && isAnimationFinished);
-             return (
-              <span key={index} className={isLabelActive ? 'label-active' : ''}>
-                {step}
-              </span>
-            );
-          })}
         </div>
       </div>
     </div>
