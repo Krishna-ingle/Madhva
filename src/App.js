@@ -8,6 +8,8 @@ import Navbar from './components/Navbar';
 import UserFormPage from "./pages/userform";
 import { ProcessDealPage } from './pages/ProcessDealPage';
 import ServiceDetail from './pages/ServiceDetail';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsAndConditions from './components/TermsAndConditions';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path="/userform" element={<UserFormPage />} />
           <Route path='/processdealpage' element={<ProcessDealPage/>} />
           <Route path="/services/:serviceId" element={<ServiceDetail />} />
+          <Route path='/PrivacyPolicy' element={<PrivacyPolicy />} />
+          <Route path = '/TermsAndConditions' element={<TermsAndConditions />} />
         </Routes>
       </div>
     </Router>

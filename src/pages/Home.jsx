@@ -22,7 +22,7 @@ const Home = () => {
     }
   }, [hash]);
   return (
-    <div className="home">
+    <div className="home"style={{ overflow: 'hidden', width: '100vw' }} >
       <Navbar />
       <Hero />
       <Services />

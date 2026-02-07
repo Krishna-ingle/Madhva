@@ -1,9 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FiGithub, FiLinkedin, FiTwitter, FiInstagram, FiYoutube } from 'react-icons/fi';
 import '../assets/styles/Footer.css';
 import logo from '../assets/images/madhvalogo.svg';
 
 const Footer = () => {
+  const navigate= useNavigate();
+  const handleNavigation = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate('/PrivacyPolicy');
+  }
+  const handleTermAndConditionNavigation = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate('/TermsAndConditions');
+  }
   return (
     <footer className="footer-evernote">
       <div className="footer-container">
@@ -67,8 +77,8 @@ const Footer = () => {
         <div className="footer-bottom-copyright">
           <p>© {new Date().getFullYear()} Madhava Global. All rights reserved.</p>
           <div className="footer-legal-links">
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms of Service</a>
+            <a onClick={handleNavigation} style={{cursor:"pointer"}}>Privacy Policy</a>
+            <a onClick={handleTermAndConditionNavigation}>Terms of Service</a>
           </div>
         </div>
       </div>
