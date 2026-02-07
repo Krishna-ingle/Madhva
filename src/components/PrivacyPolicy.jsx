@@ -98,19 +98,18 @@ const PrivacyPolicy = () => {
             <p>You have the right to access, correct, or delete your personal information. To exercise these rights, please contact our data team.</p>
           </section>
 
-          <section id="contact" className="contact-box">
+          <section id="contact">
             <h2>7. Contact Information</h2>
             <p>If you have questions regarding this policy:</p>
             <div className="contact-details">
-              <p><strong>Madhava Global</strong></p>
-              <p>Shegaon, Maharashtra, India</p>
-              <p>contact@madhavaglobal.com</p>
+              <p><strong>Address:</strong> Behind Trimurti Lawn, Sai Nagar, Hingna, Nagpur, Maharashtra - 441110, India</p>
+              <p style={{ marginTop: '10px' }}><strong>Email:</strong> hello@madhavaglobal.in</p>
             </div>
           </section>
         </main>
       </div>
-      
-        <Footer />
+
+      <Footer />
     </div>
   );
 };

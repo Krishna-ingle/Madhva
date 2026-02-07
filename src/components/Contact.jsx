@@ -5,7 +5,7 @@ import '../assets/styles/Contact.css';
 import { style } from 'framer-motion/client';
 
 const Contact = () => {
-  const whatsappNumber = "919579465525";
+  const whatsappNumber = "919637393819";
   const emailAddress = "inglekrishna05@gmail.com";
 
   const [formData, setFormData] = useState({

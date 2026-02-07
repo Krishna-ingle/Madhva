@@ -111,9 +111,8 @@ const TermsAndConditions = () => {
             <h2>7. Contact Information</h2>
             <p>For questions regarding these Terms of Use, please contact us:</p>
             <div className="contact-details">
-              <p><strong>Madhava Global</strong></p>
-              <p> Shegaon, Maharashtra, India</p>
-              <p>contact@madhavaglobal.com</p>
+              <p><strong>Address:</strong> Behind Trimurti Lawn, Sai Nagar, Hingna, Nagpur, Maharashtra - 441110, India</p>
+              <p style={{ marginTop: '10px' }}><strong>Email:</strong> hello@madhavaglobal.in</p>
             </div>
           </section>
         </main>
