@@ -106,7 +106,7 @@ const Contact = () => {
 
         <div className="quick-actions-container">
           <motion.a
-            href={`https://wa.me/${whatsappNumber}?text=Hi Madhava Global, I'm interested in a project!`}
+            href={`https://wa.me/${whatsappNumber}?text= Hi Madhava Global, I'm interested, Can you please share the further project details.`}
             target="_blank"
             rel="noopener noreferrer"
             className="action-card whatsapp"
@@ -120,7 +120,7 @@ const Contact = () => {
           </motion.a>
 
           <motion.a
-            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=Project Inquiry&body=Hi Madhava Global,`}
+            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=Project Inquiry&body=Hi Madhava Global, I'm interested in a project. Please share further details.`}
             className="action-card email"
             whileHover={{ y: -2 }}
           >

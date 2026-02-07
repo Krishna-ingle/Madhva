@@ -5,8 +5,13 @@
   padding: 0;
   box-sizing: border-box;
 }
-html{
-  scroll-behavior: smooth;
+
+html, body {
+  /* Use overflow-x hidden ONLY here to stop the scroll */
+  overflow-x: hidden;
+  /* Allow the width to be natural */
+  width: 100%; 
+  position: relative;
 }
 
 body {
@@ -17,6 +22,13 @@ body {
   color: #1A1A1A;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+#root {
+  /* Ensure the main container doesn't force a weird width */
+  width: 100%;
+}
+
+/* Force hide the horizontal scrollbar specifically */
+::-webkit-scrollbar:horizontal {
+  display: none !important;
+  height: 0px !important;
 }

@@ -8,7 +8,6 @@ html, body {
   color: #333333;
   line-height: 1.6;
   padding-left: 20px;
-  padding-right: 20px;
   padding-top: 80px;
   overflow: visible !important;
   display: block;
@@ -136,6 +135,8 @@ html, body {
   }
 
   .privacy-page-wrapper {
-    padding: 40px 15px;
+    padding-top: 80px !important; 
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }

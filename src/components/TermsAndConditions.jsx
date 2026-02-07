@@ -107,7 +107,7 @@ const TermsAndConditions = () => {
             </p>
           </section>
 
-          <section id="contact" className="contact-box">
+          <section id="contact" style={{marginRight:'40px', backgroundColor:'#00000'}}>
             <h2>7. Contact Information</h2>
             <p>For questions regarding these Terms of Use, please contact us:</p>
             <div className="contact-details">

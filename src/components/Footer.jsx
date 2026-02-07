@@ -7,11 +7,11 @@ import logo from '../assets/images/madhvalogo.svg';
 const Footer = () => {
   const navigate= useNavigate();
   const handleNavigation = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    navigate('/PrivacyPolicy');
-  }
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  navigate('/PrivacyPolicy');
+}
   const handleTermAndConditionNavigation = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     navigate('/TermsAndConditions');
   }
   return (
@@ -78,7 +78,7 @@ const Footer = () => {
           <p>© {new Date().getFullYear()} Madhava Global. All rights reserved.</p>
           <div className="footer-legal-links">
             <a onClick={handleNavigation} style={{cursor:"pointer"}}>Privacy Policy</a>
-            <a onClick={handleTermAndConditionNavigation}>Terms of Service</a>
+            <a onClick={handleTermAndConditionNavigation} style={{cursor:'pointer'}}>Terms of Service</a>
           </div>
         </div>
       </div>
