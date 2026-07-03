@@ -11,6 +11,12 @@ import ServiceDetail from './pages/ServiceDetail';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsAndConditions from './components/TermsAndConditions';
 
+
+
+import NetBillPrivacyPolicy from './components/NetBillPrivacyPolicy';
+import NetBillTermsAndConditions from './components/NetBillTermsAndConditions';
+ 
+
 function App() {
   return (
     <Router>
@@ -24,6 +30,12 @@ function App() {
           <Route path="/services/:serviceId" element={<ServiceDetail />} />
           <Route path='/PrivacyPolicy' element={<PrivacyPolicy />} />
           <Route path = '/TermsAndConditions' element={<TermsAndConditions />} />
+
+  
+          {/* NetBill app-specific legal pages — used for Play Console submission */}
+          <Route path='/netbill/privacy-policy' element={<NetBillPrivacyPolicy />} />
+          <Route path='/netbill/terms-and-conditions' element={<NetBillTermsAndConditions />} />
+            
         </Routes>
       </div>
     </Router>
