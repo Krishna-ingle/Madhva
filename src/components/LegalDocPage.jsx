@@ -8,7 +8,7 @@ import remarkGfm from 'remark-gfm';
 // the same component works in local dev and production without edits.
 // Create a `.env` file in your project root with:
 //   REACT_APP_API_BASE_URL=https://api.yourdomain.in/api/v1
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/api/v1';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://hotelview.onrender.com/api/v1';
 
 const ENDPOINTS = {
   privacy: `${API_BASE_URL}/info/privacy`,
