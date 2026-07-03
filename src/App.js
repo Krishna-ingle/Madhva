@@ -13,8 +13,8 @@ import TermsAndConditions from './components/TermsAndConditions';
 
 
 
-import NetBillPrivacyPolicy from './components/NetBillPrivacyPolicy';
-import NetBillTermsAndConditions from './components/NetBillTermsAndConditions';
+import NetBillPrivacyPolicy from './components/Netbillprivacypolicy';
+import NetBillTermsAndConditions from './components/Netbilltermsandconditions';
  
 
 function App() {
