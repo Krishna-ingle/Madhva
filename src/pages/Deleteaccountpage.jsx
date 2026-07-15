@@ -115,9 +115,9 @@ export const DeleteAccountPage = () => {
             <li>Your business/restaurant name (if applicable)</li>
           </ul>
 
-          <a href={mailtoLink} style={styles.button}>
+          {/* <a href={mailtoLink} style={styles.button}>
             Request Account Deletion
-          </a>
+          </a> */}
         </section>
 
         {/* ─── What Happens Next ─── */}
