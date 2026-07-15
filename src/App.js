@@ -10,7 +10,7 @@ import { ProcessDealPage } from './pages/ProcessDealPage';
 import ServiceDetail from './pages/ServiceDetail';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsAndConditions from './components/TermsAndConditions';
-import  DeleteAccountPage  from '.pages/Deleteaccountpage';
+import  DeleteAccountPage  from './pages/Deleteaccountpage';
 
 
 
