@@ -10,6 +10,7 @@ import { ProcessDealPage } from './pages/ProcessDealPage';
 import ServiceDetail from './pages/ServiceDetail';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsAndConditions from './components/TermsAndConditions';
+import  DeleteAccountPage  from '.pages/Deleteaccountpage';
 
 
 
@@ -35,6 +36,8 @@ function App() {
           {/* NetBill app-specific legal pages — used for Play Console submission */}
           <Route path='/netbill/privacy-policy' element={<NetBillPrivacyPolicy />} />
           <Route path='/netbill/terms-and-conditions' element={<NetBillTermsAndConditions />} />
+
+           <Route path="/netbill/delete-account" element={<DeleteAccountPage />} />
             
         </Routes>
       </div>
