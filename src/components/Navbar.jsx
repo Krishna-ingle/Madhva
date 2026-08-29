@@ -1,63 +1,68 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom'; // Add useLocation
-import { FiMenu, FiX } from 'react-icons/fi';
-import logoImg from '../assets/images/madhvalogo.svg';
-import '../assets/styles/Navbar.css';
 import { useNavigate } from 'react-router-dom';
+import { FiMenu, FiX } from 'react-icons/fi';
+import logoImg from '../assets/images/madhvalogo.svg'; 
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Use this function for ALL navigation to ensure the menu closes
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   const handleNavigation = (path) => {
-    setMenuOpen(false); // Force close menu state
-    window.scrollTo(0, 0); // Reset scroll position
+    setMenuOpen(false);
+    window.scrollTo(0, 0);
     navigate(path);
   };
 
-  // ... (keep useEffect for scroll)
-
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container nav-container">
-        {/* LOGO */}
-        <div className="logo-link" onClick={() => handleNavigation('/')} style={{cursor: 'pointer'}}>
-          <img src={logoImg} alt="Madhava Studios" className="navbar-brand-svg" />
-        </div>
+    <nav className={`fixed top-0 left-0 right-0 z-[2000] transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`}>
+      <div className="max-w-[1400px] w-full px-6 mx-auto flex items-center justify-between">
         
-        {/* MENU WRAPPER */}
-        <div className={`nav-menu-wrapper ${menuOpen ? 'active' : ''}`}>
-          <ul className="nav-links">
-            {/* Use the new unified handler for links too */}
-            <li><span onClick={() => handleNavigation('/')}>Home</span></li>
-            <li><a href="/#services" onClick={() => setMenuOpen(false)}>Services</a></li>
-            <li><a href="/#portfolio" onClick={() => setMenuOpen(false)}>Portfolio</a></li>
-            <li><a href="/#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
+        {/* LOGO */}
+        <div onClick={() => handleNavigation('/')} className="flex items-center cursor-pointer">
+          <img src={logoImg} alt="Madhava Global" className="h-8 md:h-10 w-auto" />
+        </div>
+
+        {/* CENTER MENU (Your Original Links) */}
+        <div className={`fixed lg:static left-0 w-full lg:w-auto bg-white lg:bg-transparent flex flex-col lg:flex-row items-center gap-8 lg:gap-10 py-12 lg:py-0 shadow-xl lg:shadow-none transition-all duration-300 z-[1500] ${menuOpen ? 'top-[70px]' : 'top-[-100vh] lg:top-auto'}`}>
+          <ul className="flex flex-col lg:flex-row gap-8 lg:gap-10 list-none text-center">
+            <li><span onClick={() => handleNavigation('/')} className="cursor-pointer font-medium text-[#0f172a] hover:text-[#539A21] transition-colors">Home</span></li>
+            <li><a href="/#product" onClick={() => setMenuOpen(false)} className="font-medium text-[#0f172a] hover:text-[#539A21] transition-colors">Product</a></li>
+            <li><a href="/#services" onClick={() => setMenuOpen(false)} className="font-medium text-[#0f172a] hover:text-[#539A21] transition-colors">Services</a></li>
+            <li><a href="/#portfolio" onClick={() => setMenuOpen(false)} className="font-medium text-[#0f172a] hover:text-[#539A21] transition-colors">Projects</a></li>
+            <li><a href="/#contact" onClick={() => setMenuOpen(false)} className="font-medium text-[#0f172a] hover:text-[#539A21] transition-colors">Contact</a></li>
           </ul>
 
-          {/* MOBILE BUTTON */}
-          <button 
-            className="cta-nav-btn mobile-only-btn" 
-            onClick={() => handleNavigation('/userform')}
-          >
-            Start for free
-          </button>
+          {/* Mobile Buttons */}
+          <div className="flex flex-col gap-3 w-4/5 lg:hidden mt-6">
+            {/* <button onClick={() => handleNavigation('/login')} className="font-medium text-[#0f172a] py-2">Log In</button> */}
+            <button onClick={() => handleNavigation('/userform')} className="bg-[#1a1a1a] text-white font-semibold px-6 py-3 rounded-md">Start For Free</button>
+            {/* <button className="bg-transparent border border-[#1a1a1a] text-[#1a1a1a] font-semibold px-6 py-3 rounded-2xl">Get a demo</button> */}
+          </div>
         </div>
 
-        <div className="nav-actions">
-          {/* DESKTOP BUTTON */}
-          <button 
-            className="cta-nav-btn desktop-only-btn"
-            onClick={() => handleNavigation('/userform')}
-          >
-            Start for free
+        {/* RIGHT ACTION BUTTONS (Desktop) - Brevo Style */}
+        <div className="hidden lg:flex items-center gap-4">
+          {/* <button onClick={() => handleNavigation('/login')} className="font-semibold text-[15px] text-[#0f172a] hover:text-[#539A21] transition-colors px-2 underline decoration-2 underline-offset-4">
+            Log in
+          </button> */}
+          <button onClick={() => handleNavigation('/userform')} className="bg-[#1a1a1a] text-white font-semibold text-[15px] px-5 py-2.5 rounded-md hover:bg-gray-800 transition-colors">
+            Start For Free
           </button>
-          
-          <div className="menu-toggle-icon" onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <FiX /> : <FiMenu />}
-          </div>
+          {/* <button className="bg-transparent text-[#1a1a1a] border border-[#1a1a1a] font-semibold text-[15px] px-5 py-2.5 rounded-xl hover:bg-white transition-colors">
+            Get a demo
+          </button> */}
+        </div>
+
+        {/* MOBILE MENU TOGGLE */}
+        <div onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden text-2xl cursor-pointer text-[#0f172a]">
+          {menuOpen ? <FiX /> : <FiMenu />}
         </div>
       </div>
     </nav>

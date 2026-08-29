@@ -1,109 +1,181 @@
 .hero {
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  padding: 8rem 0 4rem;
-  background: linear-gradient(180deg, #efebdc 0%, #ffffff 100%);
-  position: relative;
+  width: 100%;
+  padding: 40px 24px 0;
+  font-family: inherit;
 }
 
-.hero .container {
-  width: 100%;
+.hero-blob {
+  position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
-  padding: 0 20px;
+  background: #c9f2c7;
+  border-radius: 40px;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  padding: 60px 60px 100px;
+  overflow: visible;
 }
 
-/* Hero Content */
+.hero-arrow-icon {
+  position: absolute;
+  top: -20px;
+  left: 60px;
+  color: #1a7a4c;
+  transform: rotate(20deg);
+}
+
 .hero-content {
-  max-width: 700px;
-  margin: 0 auto 3rem;
+  flex: 1 1 45%;
+  z-index: 2;
 }
 
 .hero-title {
-  font-size: 4rem;
-  font-weight: 700;
-  line-height: 1.1;
-  color: #1a1a1a;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
+  font-size: 3rem;
+  line-height: 1.15;
+  font-weight: 800;
+  color: #14532d;
+  margin-bottom: 20px;
 }
 
 .hero-description {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  color: #5f6368;
-  margin-bottom: 2.5rem;
-  max-width: 600px;
-  margin: 0 auto 2.5rem; /* Centered description */
+  font-size: 1rem;
+  color: #2d3b34;
+  max-width: 420px;
+  margin-bottom: 28px;
 }
 
-/* CTA */
 .hero-cta {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  align-items: flex-start;
+  gap: 12px;
 }
 
 .btn-primary {
-  background: #101010;
-  color: white;
-  padding: 1rem 2.5rem;
+  background: #0f172a;
+  color: #fff;
   border: none;
-  border-radius: 4px;
-  font-size: 1.05rem;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .btn-primary:hover {
-  background: #00A82D;
+  background: #1e293b;
   transform: translateY(-2px);
 }
 
-/* Video Containers */
-.hero-video, .hero-video2 {
-  max-width: 800px;
-  margin: 0 auto; /* KEY FIX: This centers the containers */
-  border-radius: 12px;
+.hero-login {
+  font-size: 0.85rem;
+  color: #3f4f45;
+  max-width: 320px;
+}
+
+/* Right video card sitting like Brevo's photo panel */
+.hero-video {
+  flex: 1 1 45%;
+  position: relative;
+  border-radius: 30px;
   overflow: hidden;
   cursor: pointer;
-  background: #fff;
-  position: relative;
-  z-index: 1; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  aspect-ratio: 16 / 11;
+  max-height: 340px;
 }
 
 .hero-video-player {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
-/* Fixed your margin class into a proper spacer */
-.spacer-margin {
-  height: 50px;
+/* Branch stem + icons below the blob */
+.hero-branches {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  height: 220px;
+}
+
+.branch-lines {
+  position: absolute;
+  inset: 0;
   width: 100%;
+  height: 100%;
+}
+
+.branch-path {
+  stroke-width: 2;
+}
+
+.branch-1 { stroke: #7c6fd4; }
+.branch-2 { stroke: #e08a3c; }
+.branch-3 { stroke: #2fb5a0; }
+.branch-4 { stroke: #e05a5a; }
+
+.branch-item {
+  position: absolute;
+  bottom: 10px;
+  transform: translateX(-50%);
+}
+
+.branch-item-1 { left: 19%; }
+.branch-item-2 { left: 44%; }
+.branch-item-3 { left: 56%; }
+.branch-item-4 { left: 81%; }
+
+.branch-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  cursor: pointer;
+}
+
+.icon-purple { color: #7c6fd4; }
+.icon-orange { color: #e08a3c; }
+.icon-teal { color: #2fb5a0; }
+.icon-red { color: #e05a5a; }
+
+.hero-video2-wrap {
+  overflow: hidden;
+  padding: 0;
+}
+
+.hero-video-player.small {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .hero {
-    padding: 6rem 0 3rem;
+@media (max-width: 900px) {
+  .hero-blob {
+    flex-direction: column;
+    padding: 40px 24px 140px;
+    text-align: center;
   }
-
-  .hero-title {
-    font-size: 2.5rem;
+  .hero-content,
+  .hero-video {
+    flex: 1 1 100%;
   }
-
-  .hero-video, .hero-video2 {
-    max-width: 95%; /* Fits better on mobile */
+  .hero-video {
+    margin-top: 24px;
+    aspect-ratio: 16 / 9;
+    max-height: none;
   }
-
-  .spacer-margin {
-    height: 50px;
+  .hero-cta {
+    align-items: center;
   }
+  .hero-title { font-size: 2.2rem; }
+  .hero-branches { display: none; }
 }

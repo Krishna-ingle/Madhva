@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiMessageCircle, FiArrowRight } from 'react-icons/fi';
+import emailjs from '@emailjs/browser';
 import '../assets/styles/Contact.css';
-import { style } from 'framer-motion/client';
+
+// ── EmailJS / Web3Forms config ───────────────────────────────────────────
+const WEB3FORMS_ACCESS_KEY = 'a41a1a0d-ca8d-487b-8809-0682d60c503f'; // TODO: confirm/replace
+const EMAILJS_SERVICE_ID = 'service_0rpkocm';
+const EMAILJS_TEMPLATE_ID = 'template_bwebe79'; // TODO: new template ID
+const EMAILJS_PUBLIC_KEY = 'PloJ6Ao8Pyr65PBks';
 
 const Contact = () => {
-  const whatsappNumber = "919579465525";
-  const emailAddress = "inglekrishna05@gmail.com";
+  const whatsappNumber = "919637393819";
+  const emailAddress = "hello@madhvaglobal.in";
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -15,7 +21,6 @@ const Contact = () => {
     details: ''
   });
 
-  // NEW: State for Handling API Status
   const [alert, setAlert] = useState({ show: false, message: '', isSuccess: true });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -32,7 +37,6 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validation
     const mobileRegex = /^[0-9]{10}$/;
     if (!mobileRegex.test(formData.mobile)) {
       showAlert("Please enter a valid 10-digit mobile number.", false);
@@ -41,44 +45,52 @@ const Contact = () => {
 
     setIsSubmitting(true);
 
-    // Mapping fields to the API format provided by your friend
-    const apiPayload = {
-      name: formData.fullName, // Mapping fullName to name
-      email: formData.email,
-      mobile: formData.mobile,
-      projectType: "General Inquiry", // Default for this form
-      businessTraffic: "N/A",
-      city: "N/A",
-      screens: "N/A",
-      softwareConversion: "N/A",
-      timeline: "N/A",
-      referenceDetails: formData.details // Mapping details to referenceDetails
-    };
-
     try {
-      const response = await fetch('https://madhavaglobal.onrender.com/api/leads', {
+      // 1) Send the lead via Web3Forms
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(apiPayload),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: 'New Madhava Global contact inquiry',
+          from_name: 'Madhava Global Website',
+          name: formData.fullName || 'Not provided',
+          email: formData.email || 'Not provided',
+          mobile: formData.mobile || 'Not provided',
+          projectType: 'General Inquiry',
+          businessTraffic: 'N/A',
+          city: 'N/A',
+          screens: 'N/A',
+          softwareConversion: 'N/A',
+          timeline: 'N/A',
+          referenceDetails: formData.details || 'Not provided',
+        }),
       });
 
       const result = await response.json();
 
       if (result.success) {
-        showAlert("Thank you! Your inquiry has been received.");
+        // 2) Ack mail — only if they gave an email
+        if (formData.email.trim()) {
+          try {
+            await emailjs.send(
+              EMAILJS_SERVICE_ID,
+              EMAILJS_TEMPLATE_ID,
+              { name: formData.fullName || 'there', email: formData.email },
+              { publicKey: EMAILJS_PUBLIC_KEY }
+            );
+          } catch (ackErr) {
+            console.error('Ack email failed:', ackErr);
+          }
+        }
+
+        showAlert("Thanks! Madhava Global team will contact you shortly.");
         setFormData({ fullName: '', email: '', mobile: '', details: '' });
       } else {
         showAlert(result.message || "Something went wrong.", false);
       }
     } catch (error) {
-      // Check for the CORS issue we discussed earlier
-      if (error.message === "Failed to fetch") {
-        showAlert("Network error or CORS block. Please check backend settings.", false);
-      } else {
-        showAlert("Failed to send request. Try again later.", false);
-      }
+      showAlert("Network error. Please check your connection.", false);
     } finally {
       setIsSubmitting(false);
     }
@@ -86,18 +98,6 @@ const Contact = () => {
 
   return (
     <section id="contact" className="contact-evernote">
-      {/* CUSTOM NOTIFICATION MODAL */}
-      {alert.show && (
-        <div className={`custom-alert ${alert.isSuccess ? 'success' : 'error'}`}>
-          <div className="alert-content">
-            <span className={alert.isSuccess ? 'icon-success' : 'icon-error'}>
-              {alert.isSuccess ? '✔' : '✖'}
-            </span>
-            <p>{alert.message}</p>
-          </div>
-        </div>
-      )}
-
       <div className="contact-container">
         <div className="contact-header-modern">
           <h2 className="modern-h2">Let’s build something great</h2>
@@ -183,6 +183,27 @@ const Contact = () => {
               ></textarea>
             </div>
 
+            {/* CUSTOM INLINE ALERT ADDED HERE */}
+            {alert.show && (
+              <div className="flex justify-center mb-4">
+                <div
+                  className={`flex items-center border rounded-md px-5 py-3 w-full max-w-[420px] ${
+                    alert.isSuccess 
+                      ? 'bg-[#E8F6EE] border-[#129457]' 
+                      : 'bg-red-50 border-red-500'
+                  }`}
+                >
+                  <span
+                    className={`text-sm font-semibold ${
+                      alert.isSuccess ? 'text-[#0d6b3e]' : 'text-red-700'
+                    }`}
+                  >
+                    {alert.message}
+                  </span>
+                </div>
+              </div>
+            )}
+
             <button
               type="submit"
               className="evernote-btn"
@@ -191,17 +212,6 @@ const Contact = () => {
             >
               {isSubmitting ? "Sending..." : "Submit Request"}
             </button>
-
-
-
-
-            {/* <button
-              type="button"
-              onClick={() => showAlert("Testing Success Message", false)}
-              style={{ marginTop: '20px', padding: '10px', background: '#ccc' }}
-            >
-              Test Notification
-            </button> */}
           </form>
         </div>
       </div>

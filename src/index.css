@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
@@ -7,11 +11,12 @@
 }
 
 html, body {
-  /* Use overflow-x hidden ONLY here to stop the scroll */
   overflow-x: hidden;
-  /* Allow the width to be natural */
   width: 100%; 
   position: relative;
+}
+html, body {
+  overflow-x: hidden;
 }
 
 body {
@@ -23,11 +28,9 @@ body {
 }
 
 #root {
-  /* Ensure the main container doesn't force a weird width */
   width: 100%;
 }
 
-/* Force hide the horizontal scrollbar specifically */
 ::-webkit-scrollbar:horizontal {
   display: none !important;
   height: 0px !important;

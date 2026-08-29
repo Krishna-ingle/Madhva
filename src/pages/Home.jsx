@@ -7,6 +7,8 @@ import Portfolio from '../components/Portfolio';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import MidCTA from '../components/currentProject'
+import ClientMarquee from '../components/ClientAdds';
+import ProductSection from '../components/ProductSection';
 const Home = () => {
   const { hash } = useLocation();
 
@@ -22,16 +24,18 @@ const Home = () => {
     }
   }, [hash]);
   return (
-    <div className="home"style={{ overflow: 'hidden', width: '100vw' }} >
-      <Navbar />
-      <Hero />
-      <Services />
-      <MidCTA />
-      <Portfolio />
-      <Contact />
-      <Footer />
-    </div>
-  );
+  <div  className="home">
+    <Navbar />
+    <Hero />
+    <ClientMarquee />
+    <ProductSection />
+    <Services />
+    <MidCTA />
+    <Portfolio />
+    <Contact />
+    <Footer />
+  </div>
+);
 };
 
 export default Home;
