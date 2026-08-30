@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-[2000] transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-[2000] transition-all duration-300 ${scrolled || menuOpen ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`}>
       <div className="max-w-[1400px] w-full px-6 mx-auto flex items-center justify-between">
         
         {/* LOGO */}
@@ -29,8 +29,8 @@ const Navbar = () => {
           <img src={logoImg} alt="Madhava Global" className="h-8 md:h-10 w-auto" />
         </div>
 
-        {/* CENTER MENU (Your Original Links) */}
-        <div className={`fixed lg:static left-0 w-full lg:w-auto bg-white lg:bg-transparent flex flex-col lg:flex-row items-center gap-8 lg:gap-10 py-12 lg:py-0 shadow-xl lg:shadow-none transition-all duration-300 z-[1500] ${menuOpen ? 'top-[70px]' : 'top-[-100vh] lg:top-auto'}`}>
+        {/* CENTER MENU */}
+        <div className={`fixed lg:static top-[60px] left-0 w-full lg:w-auto bg-white lg:bg-transparent flex flex-col lg:flex-row items-center gap-8 lg:gap-10 py-12 lg:py-0 shadow-xl lg:shadow-none transition-all duration-300 z-[1500] ${menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible lg:opacity-100 lg:visible'} lg:top-auto`}>
           <ul className="flex flex-col lg:flex-row gap-8 lg:gap-10 list-none text-center">
             <li><span onClick={() => handleNavigation('/')} className="cursor-pointer font-medium text-[#0f172a] hover:text-[#539A21] transition-colors">Home</span></li>
             <li><a href="/#product" onClick={() => setMenuOpen(false)} className="font-medium text-[#0f172a] hover:text-[#539A21] transition-colors">Product</a></li>
@@ -41,27 +41,19 @@ const Navbar = () => {
 
           {/* Mobile Buttons */}
           <div className="flex flex-col gap-3 w-4/5 lg:hidden mt-6">
-            {/* <button onClick={() => handleNavigation('/login')} className="font-medium text-[#0f172a] py-2">Log In</button> */}
             <button onClick={() => handleNavigation('/userform')} className="bg-[#1a1a1a] text-white font-semibold px-6 py-3 rounded-md">Start For Free</button>
-            {/* <button className="bg-transparent border border-[#1a1a1a] text-[#1a1a1a] font-semibold px-6 py-3 rounded-2xl">Get a demo</button> */}
           </div>
         </div>
 
-        {/* RIGHT ACTION BUTTONS (Desktop) - Brevo Style */}
+        {/* RIGHT ACTION BUTTONS (Desktop) */}
         <div className="hidden lg:flex items-center gap-4">
-          {/* <button onClick={() => handleNavigation('/login')} className="font-semibold text-[15px] text-[#0f172a] hover:text-[#539A21] transition-colors px-2 underline decoration-2 underline-offset-4">
-            Log in
-          </button> */}
           <button onClick={() => handleNavigation('/userform')} className="bg-[#1a1a1a] text-white font-semibold text-[15px] px-5 py-2.5 rounded-md hover:bg-gray-800 transition-colors">
             Start For Free
           </button>
-          {/* <button className="bg-transparent text-[#1a1a1a] border border-[#1a1a1a] font-semibold text-[15px] px-5 py-2.5 rounded-xl hover:bg-white transition-colors">
-            Get a demo
-          </button> */}
         </div>
 
         {/* MOBILE MENU TOGGLE */}
-        <div onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden text-2xl cursor-pointer text-[#0f172a]">
+        <div onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden text-2xl cursor-pointer text-[#0f172a] z-[1600] p-1">
           {menuOpen ? <FiX /> : <FiMenu />}
         </div>
       </div>

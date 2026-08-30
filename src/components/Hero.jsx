@@ -3,16 +3,24 @@ import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
   const navigate = useNavigate();
-  
   const [wordIndex, setWordIndex] = useState(0);
-  const words = ['Digital Solutions', 'Custome Software', 'Web Application', 'Mobile Application'];
+  const [isAnimating, setIsAnimating] = useState(true);
+  const words = ['Digital Solutions', 'Custom Software', 'Web Application', 'Mobile Application'];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % words.length);
-    }, 2500); 
+      // Start fade out / slide up
+      setIsAnimating(false);
+
+      setTimeout(() => {
+        setWordIndex((prev) => (prev + 1) % words.length);
+        setIsAnimating(true); // Trigger fade in / slide down
+      }, 300); // Matches half of the transition duration
+
+    }, 3000);
+
     return () => clearInterval(interval);
-  }, []);
+  }, [words.length]);
 
   const handleNavigation = () => {
     window.scrollTo(0, 0);
@@ -26,21 +34,30 @@ const Hero = () => {
 
   return (
     <div className="w-full relative overflow-x-hidden font-sans">
-      
+
       {/* GREEN BACKGROUND SECTION - Notice the rounded bottom (rounded-b-[60px]) */}
       <section id="home" className="relative w-full pt-40 pb-20 lg:pb-32 bg-[#C0FFA5] rounded-bl-[40px] lg:rounded-bl-[60px]">
-        
+
         {/* Main Content Container - Keeps text properly aligned */}
         <div className="max-w-[1400px] w-full px-6 mx-auto flex flex-col lg:flex-row relative z-10">
-          
+
           {/* Left Content (Text) */}
           <div className="w-full lg:w-[50%] xl:w-[45%] text-center lg:text-left z-20">
             {/* Brevo-style Heading Layout */}
             <h1 className="text-[2.5rem] sm:text-5xl lg:text-[3rem] font-medium text-[#1a1a1a] leading-[1.1] tracking-tight min-h-[140px] lg:min-h-[180px]">
               Turn Every Idea <br />
-              into <span className="inline-block transition-all duration-500">{words[wordIndex]}</span>
+              into{' '}
+              <span
+                className={`inline-block transition-all duration-300 transform ${isAnimating
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 -translate-y-4'
+                  }`}
+                style={{ color: '#1a1a1a' }}
+              >
+                {words[wordIndex]}
+              </span>
             </h1>
-            
+
             <p className="text-lg text-[#1a1a1a] max-w-[480px] mx-auto lg:mx-0 mb-10 leading-relaxed font-medium">
               Run your operations and grow your business with simple, powerful digital platforms. From vendor management to customer loyalty.
             </p>
@@ -74,7 +91,7 @@ const Hero = () => {
 
         {/* RIGHT IMAGE SECTION - Absolutely positioned to touch the right edge */}
         <div className="w-full mt-12 lg:mt-0 lg:absolute lg:right-0 lg:top-[55%] lg:-translate-y-1/2 lg:w-[55vw] max-w-[800px] z-[5]">
-          <div  
+          <div
             className="relative cursor-pointer w-full"
           >
             {/* The image now stretches completely to the right */}
