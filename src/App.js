@@ -16,6 +16,8 @@ import  DeleteAccountPage  from './pages/Deleteaccountpage';
 
 import NetBillPrivacyPolicy from './components/Netbillprivacypolicy';
 import NetBillTermsAndConditions from './components/Netbilltermsandconditions';
+
+import NetbillLogo from './pages/netBillLogo';
  
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
           <Route path='/netbill/terms-and-conditions' element={<NetBillTermsAndConditions />} />
 
            <Route path="/netbill/delete-account" element={<DeleteAccountPage />} />
+
+            <Route path="/netbilllogo" element={<NetbillLogo />} />
             
         </Routes>
       </div>

@@ -8,11 +8,13 @@ import remarkGfm from 'remark-gfm';
 // the same component works in local dev and production without edits.
 // Create a `.env` file in your project root with:
 //   REACT_APP_API_BASE_URL=https://api.yourdomain.in/api/v1
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://hotelview.onrender.com/api/v1';
+// const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://hotelview.onrender.com/api/v1';
 
+// ─── Config ──────────────────────────────────────────────────
+// Static JSON files from public/legal/ (generated via make.js)
 const ENDPOINTS = {
-  privacy: `${API_BASE_URL}/info/privacy`,
-  terms: `${API_BASE_URL}/info/terms`,
+  privacy: '/legal/netbill-privacy.json',
+  terms: '/legal/netbill-terms.json',
 };
 
 // ─── Reusable Legal Document Page ───────────────────────────────
@@ -31,6 +33,7 @@ const LegalDocPage = ({ docType }) => {
       setLoading(true);
       setError(false);
       try {
+        console.log('Fetching:', ENDPOINTS[docType]);
         const res = await fetch(ENDPOINTS[docType], { signal: controller.signal });
         if (!res.ok) throw new Error(`Request failed: ${res.status}`);
         const data = await res.json();
